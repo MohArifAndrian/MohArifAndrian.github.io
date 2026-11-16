@@ -2,7 +2,7 @@ export const profile = {
   name: "Moh. Arif Andrian",
   firstName: "Moh. Arif",
   lastName: "Andrian",
-  initials: "MA",
+  initials: "MAA",
   photo: "/pas-foto.png",
   title: "Software Engineer | Programming Educator | IT Support & Consultant",
   location: "Bojonegoro, Jawa Timur",
@@ -53,18 +53,67 @@ export const services = [
     title: "Backend Development",
     description:
       "Merancang REST API, memelihara sistem backend, serta menata alur data agar aplikasi tetap stabil.",
+    stack: [
+      "PHP",
+      "Java",
+      "Node.js",
+      "C#",
+      "REST API",
+      "MySQL",
+      "PostgreSQL",
+      "Oracle",
+      "Redis",
+    ],
   },
   {
     no: "02",
     title: "CMS & E-commerce",
     description:
       "Mengembangkan CMS, WordPress, CRM, dan platform e-commerce sesuai kebutuhan organisasi.",
+    stack: [
+      "WordPress",
+      "PHP",
+      "Next.js",
+      "React.js",
+      "CRM",
+      "Stripe",
+      "Square",
+      "GMO",
+      "MySQL",
+    ],
   },
   {
     no: "03",
     title: "AI & Integrasi Sistem",
     description:
       "Mengintegrasikan OCR, otomasi, layanan AWS, payment gateway, dan AI ke dalam proses yang telah berjalan.",
+    stack: [
+      "OpenAI",
+      "Gemini",
+      "OCR",
+      "AWS",
+      "AWS Lambda",
+      "REST API",
+      "Node.js",
+      "Stripe",
+    ],
+  },
+  {
+    no: "04",
+    title: "Server Management & DevOps",
+    description:
+      "Mengelola infrastruktur server, konfigurasi environment, deployment aplikasi, serta pemeliharaan layanan untuk memastikan sistem berjalan stabil, aman, dan optimal.",
+    stack: [
+      "Linux",
+      "AWS EC2",
+      "AWS Lightsail",
+      "EFS",
+      "Nginx",
+      "Apache",
+      "Redis",
+      "PM2",
+      "CI/CD",
+    ],
   },
 ] as const;
 
@@ -72,6 +121,8 @@ export const skillCards = [
   { name: "React.js", group: "Frontend" },
   { name: "Next.js", group: "Frontend" },
   { name: "JavaScript", group: "Frontend" },
+  { name: "HTML", group: "Frontend" },
+  { name: "CSS", group: "Frontend" },
   { name: "PHP", group: "Backend" },
   { name: "Java", group: "Backend" },
   { name: "Node.js", group: "Backend" },
@@ -79,12 +130,12 @@ export const skillCards = [
   { name: "MySQL", group: "Database" },
   { name: "PostgreSQL", group: "Database" },
   { name: "Oracle", group: "Database" },
-  { name: "SAP", group: "ERP" },
   { name: "DB2", group: "Database" },
   { name: "Redis", group: "Database" },
   { name: "AWS", group: "Cloud" },
   { name: "Stripe", group: "Payment" },
   { name: "Square", group: "Payment" },
+  { name: "GMO", group: "Payment" },
   { name: "WordPress", group: "CMS" },
   { name: "REST API", group: "Backend" },
   { name: "Git", group: "Tools" },
@@ -96,7 +147,7 @@ export const skillCards = [
 export const stats = [
   { value: "5+", label: "Tahun pengalaman" },
   { value: `${skillCards.length}+`, label: "Skill" },
-  { value: "19+", label: "Proyek" },
+  { value: "27+", label: "Proyek" },
   { value: "3.85", label: "IPK cumlaude" },
 ] as const;
 
@@ -122,6 +173,7 @@ export const skills = {
     "Payment Gateway",
     "Stripe",
     "Square",
+    "GMO",
   ],
   Tools: [
     "Git & GitHub",
@@ -133,13 +185,13 @@ export const skills = {
     "MySQL",
     "PostgreSQL",
     "Oracle",
-    "SAP ERP",
     "DB2",
     "Redis",
     "MAMP",
     "WordPress",
     "Stripe",
     "Square",
+    "GMO",
     "Elementor",
     "Ollama",
     "AI Integration",
@@ -207,6 +259,8 @@ export type Project = {
   stack: string[];
   url: string | null;
   featured?: boolean;
+  org?: string;
+  fullWidth?: boolean;
 };
 
 export const glodingProjects: Project[] = [
@@ -233,25 +287,25 @@ export const glodingProjects: Project[] = [
     url: "https://sportic.pro",
   },
   {
-    name: "ANDRACE",
-    description:
-      "Mengelola dan memelihara website WordPress, termasuk konten, plugin, kinerja, dan infrastruktur server.",
-    stack: ["WordPress", "PHP", "AWS"],
-    url: "https://andrace.jp",
-  },
-  {
-    name: "ROCK",
+    name: "ROCK CHOCOLATE",
     description:
       "Mengelola pesanan dan pengiriman, termasuk membaca dokumen dan mencocokkan produk.",
     stack: ["Node.js", "React.js", "Redis", "OpenAI"],
-    url: null,
+    url: "https://cms.rock-chocolate.co.jp/login",
   },
   {
     name: "SHASHUSHO",
     description:
       "Optimalisasi sistem kursus penulisan tangan agar pengelolaan email, pemrosesan gambar, dan layanan berjalan lebih efisien.",
     stack: ["Java", "AWS", "SES"],
-    url: null,
+    url: "http://shashusho.com/",
+  },
+  {
+    name: "OTSUKA",
+    description:
+      "Aplikasi kesehatan digital yang terintegrasi dengan Docomo, dilengkapi avatar AI untuk pemeriksaan kesehatan, pemeriksaan fisik, latihan, saran makan dan kesehatan, serta program perbaikan kesehatan. Sistem didukung REST API Node.js serta frontend React dan Next.js.",
+    stack: ["Node.js", "React.js", "Next.js", "REST API"],
+    url: "http://olc.training/",
   },
 ];
 
@@ -297,36 +351,44 @@ export const glodingMoreProjects: Project[] = [
   {
     name: "JHIA",
     description:
-      "Pengembangan sistem terintegrasi untuk kursus kerajinan tangan dan penulisan.",
-    stack: ["Java", "JSF", "MySQL"],
-    url: null,
+      "Pengembangan sistem terintegrasi untuk mengelola operasional kursus kerajinan tangan dan handwriting, mencakup pengelolaan data peserta, administrasi kursus, serta proses bisnis secara terpusat.",
+    stack: ["Java", "JSF", "PrimeFaces", "MySQL"],
+    url: "http://jhia.org/",
   },
   {
     name: "AMIMONO",
     description:
-      "Implementasi CMS yang menggabungkan kursus penulisan tangan dengan fitur e-commerce.",
-    stack: ["PHP", "WordPress"],
-    url: null,
+      "Pengembangan platform CMS untuk pengelolaan program kursus handwriting yang terintegrasi dengan fitur e-commerce, memungkinkan pengelolaan konten, informasi kursus, dan transaksi secara efisien.",
+    stack: ["PHP", "WordPress", "MySQL", "E-commerce"],
+    url: "https://amimono.me/",
   },
   {
     name: "MAHASU",
     description:
-      "Pengembangan CRM untuk kursus peningkatan keterampilan orang tua.",
-    stack: ["CRM", "REST API"],
-    url: null,
+      "Pengembangan sistem CRM untuk mendukung pengelolaan program pelatihan peningkatan keterampilan orang tua, termasuk pengelolaan data peserta, aktivitas program, dan informasi terkait secara terstruktur.",
+    stack: ["CRM", "Backend Development", "REST API", "Database"],
+    url: "https://parents.kmahasu.com/",
   },
   {
     name: "LIFECARE",
     description:
-      "Pengembangan sistem dan CMS untuk layanan dukungan orang tua.",
-    stack: ["CMS", "Backend"],
-    url: null,
+      "Pengembangan aplikasi web dan CMS untuk mendukung layanan bagi orang tua, dengan fokus pada pengelolaan konten, informasi layanan, dan data operasional melalui sistem backend terintegrasi.",
+    stack: ["Web Development", "CMS", "Backend Development", "Database"],
+    url: "https://cms.jijity.com",
   },
   {
     name: "UM",
-    description: "CMS dengan arsitektur frontend dan backend terpisah agar lebih mudah dikembangkan.",
-    stack: ["Next.js", "Node.js"],
+    description:
+      "Platform edukasi hukum Jepang untuk ujian dan soal hukum, terdiri dari CMS berbasis React dan REST API Node.js. Sistem mengelola panduan, berita, dan kasus, serta analisis AI untuk soal pilihan ganda, jawaban singkat, dan esai, termasuk pencarian kemiripan soal historis.",
+    stack: ["React.js", "Node.js", "REST API", "AI"],
     url: null,
+  },
+  {
+    name: "ANDRACE",
+    description:
+      "Mengelola dan memelihara website WordPress, termasuk konten, plugin, kinerja, dan infrastruktur server.",
+    stack: ["WordPress", "PHP", "AWS"],
+    url: "https://andrace.jp",
   },
 ];
 
@@ -336,7 +398,7 @@ export const surabayaProjects: Project[] = [
     description:
       "Aplikasi untuk mendukung pemantauan dan administrasi proyek di dalam dinas.",
     stack: ["PHP", "MySQL"],
-    url: null,
+    url: "https://emonitoring-pkp.cktr.web.id",
   },
   {
     name: "Sistem Penomoran Surat",
@@ -347,13 +409,73 @@ export const surabayaProjects: Project[] = [
   },
 ];
 
+export const personalProjects: Project[] = [
+  {
+    name: "El-MaHiDa",
+    org: "Bagian Administrasi Kesejahteraan Rakyat dan Sosial · Pemerintah Kota Batu",
+    description:
+      "El-MaHiDa (Elektronik Manajemen Hibah Daerah) merupakan aplikasi untuk mempermudah manajemen hibah daerah dengan mengedepankan transparansi, efisiensi, dan akuntabilitas. Aplikasi ini menyediakan akses terhadap daftar penerima hibah pada berbagai sektor, seperti tempat ibadah, lembaga pendidikan, organisasi keagamaan, serta yayasan yang membantu anak yatim piatu dan dhuafa. Seluruh proses hibah dikelola secara terintegrasi, mulai dari pengajuan, pencairan dana, hingga pertanggungjawaban penggunaan dana.",
+    stack: ["Sistem Informasi", "Pemerintahan"],
+    url: null,
+  },
+  {
+    name: "SMARTLBM",
+    org: "Yayasan Lembaga Bakti Muslim Al Falah Sragen",
+    description:
+      "Platform pembelajaran virtual berkarakter Islami sekaligus sistem informasi manajemen sekolah. Dikembangkan bersama Yayasan Lembaga Bakti Muslim Al Falah Sragen untuk membangun media pembelajaran daring berstandar Sekolah Islam Terpadu, serta mengintegrasikan sekolah, siswa, orang tua, dan mitra pendidikan dalam satu platform SMARTLBM.",
+    stack: ["E-learning", "SIM Sekolah"],
+    url: null,
+  },
+  {
+    name: "SIM-APPS",
+    org: "SMK Negeri 5 Malang",
+    description:
+      "Sistem informasi manajemen administrasi perangkat pembelajaran dan supervisi (SIM-APPS) dikembangkan untuk membantu pengelolaan perangkat pembelajaran dan supervisi penilaian kinerja guru di SMK Negeri 5 Malang. Sistem ini mendukung guru dalam menyusun perangkat pembelajaran, memantau kinerja melalui supervisi, serta menjembatani supervisor dengan guru yang dinilai.",
+    stack: ["Sistem Informasi", "Pendidikan"],
+    url: null,
+  },
+  {
+    name: "SnorDive",
+    org: "UPT PPP · Dinas Kelautan dan Perikanan Provinsi Jawa Timur",
+    description:
+      "Sistem informasi geografis berbasis web yang menyediakan informasi sebaran dan potensi spot snorkeling dan diving, serta kondisi ekologi di pesisir selatan Kabupaten Malang. Dikembangkan dalam naungan UPT Pelabuhan Perikanan Pantai di bawah Dinas Kelautan dan Perikanan Provinsi Jawa Timur.",
+    stack: ["GIS", "Web"],
+    url: null,
+  },
+  {
+    name: "Web Profile MAN 2 Lamongan",
+    org: "MAN 2 Lamongan",
+    description:
+      "Website profil Madrasah Aliyah Negeri 2 Lamongan sebagai media informasi publik sekolah. Situs ini menampilkan profil lembaga, program pendidikan, berita, dan kegiatan madrasah agar informasi lebih mudah diakses oleh siswa, orang tua, dan masyarakat.",
+    stack: ["Web Design", "Pendidikan"],
+    url: null,
+  },
+  {
+    name: "Heliport Simulator",
+    org: "Politeknik Penerbangan Jayapura (Poltekbang Jayapura)",
+    description:
+      "LMS untuk pembelajaran desain heliport bagi admin, dosen, dan mahasiswa. Mahasiswa mendaftar tugas, kemudian merancang tata letak di kanvas menggunakan Fabric dan Three.js, mencakup TLOF, FATO, Safety Area, obstacle, windcone, dan komponen terkait. Dimensi diperiksa terhadap standar ICAO Annex 14 Vol II, Doc 9261, dan FAA AC 150/5390-2D. Hasil rancangan dapat diekspor dan dinilai melalui pengumpulan PDF.",
+    stack: ["Next.js", "Tailwind", "Express", "Prisma", "MySQL"],
+    url: null,
+  },
+  {
+    name: "OneEduPlus",
+    org: "PERSONAL",
+    description:
+      "CMS dan LMS manajemen sekolah multi-tenant untuk yayasan dengan beberapa unit, dari SD/MI hingga SMA/SMK/MA. Cakupannya meliputi data induk siswa, GTK, rombel, dan RBAC; akademik seperti jadwal, presensi QR, dan izin; penilaian serta rapor Kurikulum Merdeka dan K13; LMS untuk materi, tugas, dan kuis; keuangan SPP; portal wali dan siswa; SPMB; situs publik sekolah; serta operasional seperti perpustakaan, inventaris, dan payroll.",
+    stack: ["Next.js", "Express", "BullMQ", "MySQL", "Redis"],
+    url: null,
+    fullWidth: true,
+  },
+];
+
 export const batuProjects: Project[] = [
   {
     name: "Website PPID Kota Batu",
     description:
       "Pengembangan website Pejabat Pengelola Informasi dan Dokumentasi sebagai media informasi publik.",
     stack: ["PHP", "MySQL", "Web Design"],
-    url: null,
+    url: "https://ppid.batukota.go.id/",
   },
 ];
 

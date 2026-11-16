@@ -3,6 +3,7 @@ import {
   batuProjects,
   glodingMoreProjects,
   glodingProjects,
+  personalProjects,
   sisiProjects,
   surabayaProjects,
   type Project,
@@ -55,7 +56,7 @@ function CompanyHeading({
       <p className="text-xs font-semibold uppercase tracking-[0.22em] text-gold">
         {kicker}
       </p>
-      <h3 className="mt-3 text-2xl font-extrabold text-white md:text-3xl">
+      <h3 className="mx-auto mt-3 max-w-4xl text-2xl font-extrabold leading-snug text-white md:text-3xl">
         {company}
       </h3>
       <p className="mx-auto mt-2 max-w-2xl text-sm leading-6 text-muted">{note}</p>
@@ -99,7 +100,7 @@ export function SelectedWork() {
         <Reveal className="mt-16">
           <CompanyHeading
             kicker="Kontrak"
-            company="Dinas Perumahan Kota Surabaya"
+            company="Dinas Perumahan Rakyat dan Kawasan Permukiman, Cipta Karya dan Tata Ruang Kota Surabaya"
             note="Pengembangan aplikasi administrasi dinas."
           />
           <ProjectList projects={surabayaProjects} />
@@ -112,12 +113,15 @@ export function SelectedWork() {
             note="Sistem yang dikembangkan untuk Semen Indonesia Group dan perusahaan eksternal."
           />
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {sisiProjects.map((project, index) => (
+            {sisiProjects.slice(0, 3).map((project, index) => (
               <Reveal key={project.name} delay={index * 50}>
                 <Card project={project} index={index} />
               </Reveal>
             ))}
           </div>
+          <Reveal className="mt-5">
+            <ProjectList projects={sisiProjects.slice(3)} />
+          </Reveal>
         </div>
 
         <Reveal className="mt-16">
@@ -128,6 +132,43 @@ export function SelectedWork() {
           />
           <ProjectList projects={batuProjects} />
         </Reveal>
+
+        <div className="mt-20 flex items-center gap-4" aria-hidden="true">
+          <span className="h-px flex-1 bg-gold" />
+          <span className="h-2 w-10 rounded-full bg-gold" />
+          <span className="h-px flex-1 bg-gold" />
+        </div>
+
+        <Reveal className="mt-14">
+          <CompanyHeading
+            kicker="Personal"
+            company="Personal Project dan Kolaborasi"
+            note="Dikembangkan bersama instansi pemerintah, yayasan, dan lembaga pendidikan."
+          />
+        </Reveal>
+        <div className="grid gap-x-12 gap-y-12 md:grid-cols-2">
+          {personalProjects.map((project, index) => (
+            <Reveal
+              key={project.name}
+              delay={index * 60}
+              className={project.fullWidth ? "md:col-span-2" : ""}
+            >
+              <article className="border-t-2 border-gold pt-5">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-gold">
+                  {String(index + 1).padStart(2, "0")}
+                </p>
+                {project.org ? (
+                  <p className="mt-2 text-xs leading-5 text-muted">{project.org}</p>
+                ) : null}
+                <h3 className="mt-2 text-xl font-extrabold md:text-2xl">{project.name}</h3>
+                <p className="mt-3 text-sm leading-7 text-muted">{project.description}</p>
+                <p className="mt-4 text-[11px] font-medium text-gold/90">
+                  {project.stack.join(" · ")}
+                </p>
+              </article>
+            </Reveal>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -136,20 +177,42 @@ export function SelectedWork() {
 function ProjectList({ projects }: { projects: Project[] }) {
   return (
     <ul className="divide-y divide-white/10 rounded-[1.5rem] bg-night-2 ring-1 ring-white/5">
-      {projects.map((project) => (
-        <li
-          key={project.name}
-          className="flex flex-col gap-1 px-5 py-4 sm:flex-row sm:items-center sm:justify-between"
-        >
-          <div>
-            <span className="font-bold">{project.name}</span>
-            <p className="mt-1 text-sm leading-6 text-muted">{project.description}</p>
-          </div>
-          <span className="shrink-0 text-sm text-gold/90">
-            {project.stack.slice(0, 3).join(" · ")}
-          </span>
-        </li>
-      ))}
+      {projects.map((project) => {
+        const inner = (
+          <>
+            <div className="min-w-0 flex-1">
+              <span className="inline-flex items-center gap-2 font-bold">
+                {project.name}
+                {project.url ? <ArrowUpRight size={14} className="text-gold" /> : null}
+              </span>
+              <p className="mt-1 text-sm leading-6 text-muted">{project.description}</p>
+            </div>
+            <span className="text-[11px] font-medium leading-5 text-gold/90 sm:w-40 sm:shrink-0 sm:pt-1 sm:text-right">
+              {project.stack.join(" · ")}
+            </span>
+          </>
+        );
+
+        const className =
+          "flex flex-col gap-2 px-5 py-4 sm:flex-row sm:items-start sm:justify-between sm:gap-8";
+
+        return (
+          <li key={project.name}>
+            {project.url ? (
+              <a
+                href={project.url}
+                target="_blank"
+                rel="noreferrer"
+                className={`${className} transition-colors hover:bg-white/5`}
+              >
+                {inner}
+              </a>
+            ) : (
+              <div className={className}>{inner}</div>
+            )}
+          </li>
+        );
+      })}
     </ul>
   );
 }

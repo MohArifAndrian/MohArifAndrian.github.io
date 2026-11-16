@@ -13,10 +13,10 @@ export function Header({ active }: HeaderProps) {
     <header className="fixed inset-x-0 top-0 z-50 border-b border-white/5 bg-night/90 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center gap-4 px-5 py-4 lg:px-8">
         <a href="#home" className="flex items-center gap-2 font-extrabold tracking-tight">
-          <span className="grid h-10 w-10 place-items-center rounded-xl bg-gold text-sm text-ink">
+          <span className="grid h-10 min-w-10 place-items-center rounded-xl bg-gold px-1.5 text-[11px] font-extrabold tracking-tight text-ink">
             {profile.initials}
           </span>
-          <span className="hidden sm:inline">Andrian</span>
+          <span className="hidden sm:inline">{profile.name}</span>
         </a>
 
         <nav className="hidden flex-1 items-center justify-center gap-5 text-[12px] font-semibold uppercase tracking-[0.14em] lg:flex">

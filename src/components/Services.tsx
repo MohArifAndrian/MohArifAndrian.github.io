@@ -1,10 +1,10 @@
-import { Cpu, Server, ShoppingBag } from "lucide-react";
+import { Cpu, Server, ServerCog, ShoppingBag } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { services } from "../data/profile";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
 
-const icons: LucideIcon[] = [Server, ShoppingBag, Cpu];
+const icons: LucideIcon[] = [Server, ShoppingBag, Cpu, ServerCog];
 
 export function Services() {
   return (
@@ -17,20 +17,23 @@ export function Services() {
             highlight="pekerjaan"
           />
         </Reveal>
-        <div className="grid gap-5 md:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {services.map((service, index) => {
             const Icon = icons[index] ?? Server;
             return (
               <Reveal key={service.no} delay={index * 80}>
-                <article className="lift flex h-full flex-col rounded-[1.6rem] bg-gold p-6 text-ink md:p-7">
+                <article className="lift flex h-full flex-col rounded-[1.6rem] bg-gold p-5 text-ink md:p-6">
                   <div className="flex items-start justify-between">
-                    <span className="grid h-12 w-12 place-items-center rounded-2xl bg-ink text-gold">
-                      <Icon size={22} strokeWidth={1.8} />
+                    <span className="grid h-11 w-11 place-items-center rounded-2xl bg-ink text-gold">
+                      <Icon size={20} strokeWidth={1.8} />
                     </span>
                     <span className="text-sm font-bold opacity-60">{service.no}</span>
                   </div>
-                  <h3 className="mt-8 text-xl font-extrabold">{service.title}</h3>
+                  <h3 className="mt-6 text-lg font-extrabold leading-snug">{service.title}</h3>
                   <p className="mt-3 text-sm leading-6 text-ink/80">{service.description}</p>
+                  <p className="mt-auto pt-4 text-[11px] font-medium leading-5 text-ink/70">
+                    {service.stack.join(" · ")}
+                  </p>
                 </article>
               </Reveal>
             );
