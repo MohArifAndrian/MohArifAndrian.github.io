@@ -31,7 +31,7 @@ export function Education() {
             <p className="mt-6 text-xs font-semibold uppercase tracking-[0.22em] text-gold">
               Mengajar
             </p>
-            <h3 className="mt-2 text-2xl font-extrabold">Pendampingan dan pengajaran</h3>
+            <h3 className="mt-2 text-2xl font-extrabold">Asisten praktikum dan pengajaran</h3>
             <ul className="mt-4 space-y-2 text-sm leading-6 text-muted">
               {teaching.map((item) => (
                 <li key={item}>{item}</li>

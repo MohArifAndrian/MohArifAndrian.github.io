@@ -11,6 +11,26 @@ import {
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
 
+function CaseNotes({ project }: { project: Project }) {
+  if (!project.caseStudy) return null;
+  return (
+    <ul className="mt-3 space-y-2 text-sm leading-6 text-muted">
+      <li>
+        <span className="font-semibold text-gold">Masalah. </span>
+        {project.caseStudy.problem}
+      </li>
+      <li>
+        <span className="font-semibold text-gold">Kontribusi. </span>
+        {project.caseStudy.contribution}
+      </li>
+      <li>
+        <span className="font-semibold text-gold">Hasil. </span>
+        {project.caseStudy.outcome}
+      </li>
+    </ul>
+  );
+}
+
 function Card({ project, index }: { project: Project; index: number }) {
   const inner = (
     <>
@@ -18,10 +38,17 @@ function Card({ project, index }: { project: Project; index: number }) {
         <span className="text-xs font-bold text-gold">
           {String(index + 1).padStart(2, "0")}
         </span>
-        {project.url ? <ArrowUpRight size={16} className="text-gold" /> : null}
+        {project.url ? (
+          <ArrowUpRight size={16} className="text-gold" />
+        ) : (
+          <span className="text-[10px] font-semibold uppercase tracking-wider text-muted">
+            Internal
+          </span>
+        )}
       </div>
       <h3 className="mt-5 text-xl font-extrabold">{project.name}</h3>
       <p className="mt-3 text-sm leading-6 text-muted">{project.description}</p>
+      <CaseNotes project={project} />
       <p className="mt-5 text-[11px] font-semibold uppercase tracking-[0.14em] text-gold/90">
         {project.stack.slice(0, 4).join(" · ")}
       </p>
@@ -162,6 +189,7 @@ export function SelectedWork() {
                 ) : null}
                 <h3 className="mt-2 text-xl font-extrabold md:text-2xl">{project.name}</h3>
                 <p className="mt-3 text-sm leading-7 text-muted">{project.description}</p>
+                <CaseNotes project={project} />
                 <p className="mt-4 text-[11px] font-medium text-gold/90">
                   {project.stack.join(" · ")}
                 </p>

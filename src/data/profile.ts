@@ -21,8 +21,8 @@ export const profile = {
   ],
   tagline: "Saya mengembangkan sistem yang mendukung aktivitas kerja sehari-hari.",
   bio: [
-    "Saya merupakan software engineer dengan pengalaman lebih dari lima tahun dalam pengembangan aplikasi web, backend, CMS, e-commerce, dan CRM. Saya lulusan S1 Pendidikan Teknologi Informasi, Fakultas Ilmu Komputer, Universitas Brawijaya, dengan predikat cumlaude dan IPK 3,85.",
-    "Dalam pekerjaan sehari-hari, saya memelihara sistem, menganalisis kebutuhan, menangani permasalahan teknis, serta berkolaborasi dengan tim. Minat utama saya meliputi pengembangan backend, perancangan arsitektur sistem, dan penerapan AI pada proses bisnis.",
+    "Saya merupakan software engineer dengan pengalaman lebih dari tujuh tahun dalam pengembangan backend, arsitektur sistem, API, basis data, CMS, e-commerce, dan CRM. Saya lulusan S1 Pendidikan Teknologi Informasi, Fakultas Ilmu Komputer, Universitas Brawijaya, dengan predikat cumlaude dan IPK 3,85.",
+    "Dalam pekerjaan sehari-hari, saya merancang alur data, mengintegrasikan pembayaran dan layanan pihak ketiga, memelihara server, serta berkolaborasi dengan tim. Minat utama saya meliputi pengembangan backend, perancangan arsitektur sistem, dan penerapan AI pada proses bisnis.",
   ],
 } as const;
 
@@ -37,10 +37,12 @@ export const navItems = [
 ] as const;
 
 export const aboutHighlights = [
-  "Web Development",
-  "Backend Systems",
+  "System Architecture",
+  "API Development",
+  "Database Design",
+  "Payment Integration",
+  "Server Management",
   "CMS & WordPress",
-  "AWS Cloud",
   "AI Integration",
   "Sistem Informasi Geospasial",
   "Data Analytics",
@@ -52,7 +54,7 @@ export const services = [
     no: "01",
     title: "Backend Development",
     description:
-      "Merancang REST API, memelihara sistem backend, serta menata alur data agar aplikasi tetap stabil.",
+      "Merancang arsitektur backend dan REST API, menata skema basis data, serta mengintegrasikan pembayaran dan layanan pihak ketiga agar sistem tetap stabil.",
     stack: [
       "PHP",
       "Java",
@@ -142,13 +144,6 @@ export const skillCards = [
   { name: "GIS", group: "Geospatial" },
   { name: "Data Analyst", group: "Analytics" },
   { name: "BA & QA", group: "Quality" },
-] as const;
-
-export const stats = [
-  { value: "5+", label: "Tahun pengalaman" },
-  { value: `${skillCards.length}+`, label: "Skill" },
-  { value: "27+", label: "Proyek" },
-  { value: "3.85", label: "IPK cumlaude" },
 ] as const;
 
 export const skills = {
@@ -261,6 +256,11 @@ export type Project = {
   featured?: boolean;
   org?: string;
   fullWidth?: boolean;
+  caseStudy?: {
+    problem: string;
+    contribution: string;
+    outcome: string;
+  };
 };
 
 export const glodingProjects: Project[] = [
@@ -271,6 +271,14 @@ export const glodingProjects: Project[] = [
     stack: ["Node.js", "React.js", "AWS", "OpenAI", "Gemini"],
     url: "https://tonookashoten.com",
     featured: true,
+    caseStudy: {
+      problem:
+        "Pemrosesan pesanan masih bergantung pada pembacaan dokumen secara manual, sehingga pencocokan produk lambat dan rentan kesalahan.",
+      contribution:
+        "Membangun alur OCR dan AI untuk mengekstrak data dokumen lalu mencocokkannya ke katalog secara otomatis.",
+      outcome:
+        "Pesanan dapat masuk ke sistem lebih cepat, dengan data produk yang lebih konsisten.",
+    },
   },
   {
     name: "DRAMATIC CAREERS",
@@ -278,6 +286,14 @@ export const glodingProjects: Project[] = [
       "Aplikasi pencarian kerja dan magang untuk kebutuhan profesional, dengan autentikasi Google agar pengguna tidak perlu membuat akun baru.",
     stack: ["Google OAuth", "GCP", "API"],
     url: "https://dramatic.careers",
+    caseStudy: {
+      problem:
+        "Proses pencarian kerja dan magang masih terhambat jika pengguna harus membuat akun baru terlebih dahulu.",
+      contribution:
+        "Mengembangkan platform karier berbasis web dengan autentikasi Google OAuth dan integrasi API di GCP.",
+      outcome:
+        "Pengguna dapat masuk dan mengakses lowongan tanpa mendaftar ulang.",
+    },
   },
   {
     name: "SPORTIC",
@@ -285,6 +301,14 @@ export const glodingProjects: Project[] = [
       "Platform keanggotaan dengan registrasi, verifikasi email, dasbor, dan pengelolaan poin.",
     stack: ["JavaScript", "REST API"],
     url: "https://sportic.pro",
+    caseStudy: {
+      problem:
+        "Pengelolaan keanggotaan, verifikasi, dan poin masih perlu disatukan agar mudah dipantau.",
+      contribution:
+        "Membangun alur registrasi, verifikasi email, dasbor, dan REST API untuk pengelolaan poin.",
+      outcome:
+        "Anggota dapat mendaftar, masuk ke dasbor, dan memantau poin dalam satu platform.",
+    },
   },
   {
     name: "ROCK CHOCOLATE",
@@ -292,6 +316,14 @@ export const glodingProjects: Project[] = [
       "Mengelola pesanan dan pengiriman, termasuk membaca dokumen dan mencocokkan produk.",
     stack: ["Node.js", "React.js", "Redis", "OpenAI"],
     url: "https://cms.rock-chocolate.co.jp/login",
+    caseStudy: {
+      problem:
+        "Pengelolaan pesanan dan pengiriman terhambat ketika data produk harus dicocokkan dari dokumen secara terpisah.",
+      contribution:
+        "Mengembangkan CMS untuk membaca dokumen, mencocokkan produk, dan menata alur pesanan dengan dukungan AI.",
+      outcome:
+        "Operasional pesanan dan pengiriman dapat dipantau dalam satu sistem.",
+    },
   },
   {
     name: "SHASHUSHO",
@@ -299,13 +331,29 @@ export const glodingProjects: Project[] = [
       "Optimalisasi sistem kursus penulisan tangan agar pengelolaan email, pemrosesan gambar, dan layanan berjalan lebih efisien.",
     stack: ["Java", "AWS", "SES"],
     url: "http://shashusho.com/",
+    caseStudy: {
+      problem:
+        "Operasional kursus terhambat ketika email, pemrosesan gambar, dan layanan berjalan terpisah.",
+      contribution:
+        "Mengoptimalkan sistem kursus pada Java, AWS, dan Amazon SES agar alur layanan lebih terintegrasi.",
+      outcome:
+        "Pengelolaan email, gambar, dan layanan kursus menjadi lebih efisien.",
+    },
   },
   {
     name: "OTSUKA",
     description:
-      "Aplikasi kesehatan digital yang terintegrasi dengan Docomo, dilengkapi avatar AI untuk pemeriksaan kesehatan, pemeriksaan fisik, latihan, saran makan dan kesehatan, serta program perbaikan kesehatan. Sistem didukung REST API Node.js serta frontend React dan Next.js.",
+      "Aplikasi kesehatan digital yang terintegrasi dengan Docomo, dilengkapi avatar AI untuk pemeriksaan kesehatan, pemeriksaan fisik, latihan, saran makan dan kesehatan, serta program perbaikan kesehatan.",
     stack: ["Node.js", "React.js", "Next.js", "REST API"],
     url: "http://olc.training/",
+    caseStudy: {
+      problem:
+        "Pengguna membutuhkan pendampingan kesehatan digital yang terhubung dengan ekosistem Docomo.",
+      contribution:
+        "Mengembangkan REST API Node.js dan frontend React/Next.js, termasuk alur pemeriksaan, latihan, saran makan, dan avatar AI.",
+      outcome:
+        "Pemeriksaan kesehatan dan program perbaikan dapat diakses dalam satu aplikasi.",
+    },
   },
 ];
 
@@ -316,6 +364,14 @@ export const sisiProjects: Project[] = [
       "Pengembangan sistem Customer Relationship Management (CRM) Retail untuk Semen Indonesia Group.",
     stack: ["PHP", "Oracle"],
     url: null,
+    caseStudy: {
+      problem:
+        "Pengelolaan hubungan pelanggan ritel SMIG perlu diseragamkan di tingkat grup.",
+      contribution:
+        "Mengembangkan CRM Retail pada PHP dan Oracle untuk kebutuhan operasional Semen Indonesia Group.",
+      outcome:
+        "Data pelanggan dan proses ritel dapat dikelola secara terpusat pada sistem internal.",
+    },
   },
   {
     name: "MSC — PT Solusi Bangun Indonesia",
@@ -323,6 +379,14 @@ export const sisiProjects: Project[] = [
       "Pengembangan sistem Marketing & Supply Chain (MSC) di PT Solusi Bangun Indonesia.",
     stack: ["PHP", "Oracle"],
     url: null,
+    caseStudy: {
+      problem:
+        "Proses pemasaran dan rantai pasok perlu disatukan agar data operasional lebih mudah dikelola.",
+      contribution:
+        "Mengembangkan sistem Marketing & Supply Chain pada PHP dan Oracle untuk PT Solusi Bangun Indonesia.",
+      outcome:
+        "Alur pemasaran dan pasokan dapat dipantau dalam sistem internal yang terintegrasi.",
+    },
   },
   {
     name: "E-DEMS",
@@ -330,6 +394,14 @@ export const sisiProjects: Project[] = [
       "Implementasi Electronic Design Engineering Management Systems (E-DEMS) untuk layanan SMIG Jasa.",
     stack: ["PHP", "Oracle"],
     url: null,
+    caseStudy: {
+      problem:
+        "Pengelolaan rekayasa dan desain perlu terdokumentasi secara elektronik agar lebih mudah ditelusuri.",
+      contribution:
+        "Mengimplementasikan E-DEMS pada PHP dan Oracle untuk layanan SMIG Jasa.",
+      outcome:
+        "Dokumen dan proses desain engineering dapat dikelola dalam sistem internal.",
+    },
   },
   {
     name: "Quality Management",
@@ -417,6 +489,14 @@ export const personalProjects: Project[] = [
       "El-MaHiDa (Elektronik Manajemen Hibah Daerah) merupakan aplikasi untuk mempermudah manajemen hibah daerah dengan mengedepankan transparansi, efisiensi, dan akuntabilitas. Aplikasi ini menyediakan akses terhadap daftar penerima hibah pada berbagai sektor, seperti tempat ibadah, lembaga pendidikan, organisasi keagamaan, serta yayasan yang membantu anak yatim piatu dan dhuafa. Seluruh proses hibah dikelola secara terintegrasi, mulai dari pengajuan, pencairan dana, hingga pertanggungjawaban penggunaan dana.",
     stack: ["Sistem Informasi", "Pemerintahan"],
     url: null,
+    caseStudy: {
+      problem:
+        "Proses hibah daerah masih sulit dilacak secara terbuka, dari pengajuan hingga pertanggungjawaban dana.",
+      contribution:
+        "Mengembangkan El-MaHiDa agar daftar penerima, pengajuan, pencairan, dan pertanggungjawaban hibah dikelola dalam satu sistem.",
+      outcome:
+        "Manajemen hibah daerah menjadi lebih transparan, terintegrasi, dan mudah diawasi.",
+    },
   },
   {
     name: "SMARTLBM",
@@ -425,6 +505,14 @@ export const personalProjects: Project[] = [
       "Platform pembelajaran virtual berkarakter Islami sekaligus sistem informasi manajemen sekolah. Dikembangkan bersama Yayasan Lembaga Bakti Muslim Al Falah Sragen untuk membangun media pembelajaran daring berstandar Sekolah Islam Terpadu, serta mengintegrasikan sekolah, siswa, orang tua, dan mitra pendidikan dalam satu platform SMARTLBM.",
     stack: ["E-learning", "SIM Sekolah"],
     url: null,
+    caseStudy: {
+      problem:
+        "Sekolah, siswa, orang tua, dan mitra pendidikan belum terhubung dalam satu media pembelajaran yang terstandar.",
+      contribution:
+        "Mengembangkan platform e-learning dan sistem informasi manajemen sekolah bersama Yayasan Al Falah Sragen.",
+      outcome:
+        "Pembelajaran daring dan komunikasi antarpihak sekolah dapat berlangsung dalam satu platform SMARTLBM.",
+    },
   },
   {
     name: "SIM-APPS",
@@ -433,6 +521,14 @@ export const personalProjects: Project[] = [
       "Sistem informasi manajemen administrasi perangkat pembelajaran dan supervisi (SIM-APPS) dikembangkan untuk membantu pengelolaan perangkat pembelajaran dan supervisi penilaian kinerja guru di SMK Negeri 5 Malang. Sistem ini mendukung guru dalam menyusun perangkat pembelajaran, memantau kinerja melalui supervisi, serta menjembatani supervisor dengan guru yang dinilai.",
     stack: ["Sistem Informasi", "Pendidikan"],
     url: null,
+    caseStudy: {
+      problem:
+        "Penyusunan perangkat pembelajaran dan supervisi kinerja guru di SMKN 5 Malang masih sulit dipantau secara terpusat.",
+      contribution:
+        "Mengembangkan SIM-APPS untuk penyusunan perangkat, pemantauan supervisi, dan penghubungan guru dengan supervisor.",
+      outcome:
+        "Administrasi perangkat pembelajaran dan penilaian kinerja guru dapat dikelola dalam satu sistem.",
+    },
   },
   {
     name: "SnorDive",
@@ -441,6 +537,14 @@ export const personalProjects: Project[] = [
       "Sistem informasi geografis berbasis web yang menyediakan informasi sebaran dan potensi spot snorkeling dan diving, serta kondisi ekologi di pesisir selatan Kabupaten Malang. Dikembangkan dalam naungan UPT Pelabuhan Perikanan Pantai di bawah Dinas Kelautan dan Perikanan Provinsi Jawa Timur.",
     stack: ["GIS", "Web"],
     url: null,
+    caseStudy: {
+      problem:
+        "Informasi sebaran dan potensi spot snorkeling serta diving di pesisir selatan Kabupaten Malang belum mudah diakses secara spasial.",
+      contribution:
+        "Membangun sistem informasi geografis berbasis web untuk memetakan spot, potensi, dan kondisi ekologi di bawah naungan UPT PPP.",
+      outcome:
+        "Sebaran lokasi dan informasi ekologi dapat ditelusuri melalui peta digital.",
+    },
   },
   {
     name: "Web Profile MAN 2 Lamongan",
@@ -449,23 +553,47 @@ export const personalProjects: Project[] = [
       "Website profil Madrasah Aliyah Negeri 2 Lamongan sebagai media informasi publik sekolah. Situs ini menampilkan profil lembaga, program pendidikan, berita, dan kegiatan madrasah agar informasi lebih mudah diakses oleh siswa, orang tua, dan masyarakat.",
     stack: ["Web Design", "Pendidikan"],
     url: null,
+    caseStudy: {
+      problem:
+        "Informasi profil, program, dan kegiatan madrasah belum mudah diakses oleh siswa, orang tua, dan masyarakat.",
+      contribution:
+        "Mengembangkan website profil MAN 2 Lamongan sebagai media informasi publik sekolah.",
+      outcome:
+        "Profil lembaga, berita, dan kegiatan madrasah dapat diakses secara daring.",
+    },
   },
   {
     name: "Heliport Simulator",
     org: "Politeknik Penerbangan Jayapura (Poltekbang Jayapura)",
     description:
-      "LMS untuk pembelajaran desain heliport bagi admin, dosen, dan mahasiswa. Mahasiswa mendaftar tugas, kemudian merancang tata letak di kanvas menggunakan Fabric dan Three.js, mencakup TLOF, FATO, Safety Area, obstacle, windcone, dan komponen terkait. Dimensi diperiksa terhadap standar ICAO Annex 14 Vol II, Doc 9261, dan FAA AC 150/5390-2D. Hasil rancangan dapat diekspor dan dinilai melalui pengumpulan PDF.",
+      "LMS untuk pembelajaran desain heliport bagi admin, dosen, dan mahasiswa, dengan pemeriksaan dimensi terhadap standar ICAO dan FAA.",
     stack: ["Next.js", "Tailwind", "Express", "Prisma", "MySQL"],
     url: null,
+    caseStudy: {
+      problem:
+        "Mahasiswa perlu merancang heliport sesuai standar, sementara pengecekan dimensi masih sulit dilakukan secara manual.",
+      contribution:
+        "Membangun LMS dengan kanvas Fabric dan Three.js, peran admin-dosen-mahasiswa, pemeriksaan ICAO Annex 14 Vol II, Doc 9261, dan FAA AC 150/5390-2D, serta pengumpulan PDF.",
+      outcome:
+        "Tugas desain dapat dikerjakan, diperiksa terhadap standar, dan dinilai dalam satu alur pembelajaran.",
+    },
   },
   {
     name: "OneEduPlus",
     org: "PERSONAL",
     description:
-      "CMS dan LMS manajemen sekolah multi-tenant untuk yayasan dengan beberapa unit, dari SD/MI hingga SMA/SMK/MA. Cakupannya meliputi data induk siswa, GTK, rombel, dan RBAC; akademik seperti jadwal, presensi QR, dan izin; penilaian serta rapor Kurikulum Merdeka dan K13; LMS untuk materi, tugas, dan kuis; keuangan SPP; portal wali dan siswa; SPMB; situs publik sekolah; serta operasional seperti perpustakaan, inventaris, dan payroll.",
+      "CMS dan LMS manajemen sekolah multi-tenant untuk yayasan dengan beberapa unit, dari SD/MI hingga SMA/SMK/MA.",
     stack: ["Next.js", "Express", "BullMQ", "MySQL", "Redis"],
     url: null,
     fullWidth: true,
+    caseStudy: {
+      problem:
+        "Yayasan dengan banyak unit sekolah membutuhkan satu sistem untuk akademik, LMS, keuangan, dan portal, tanpa membangun aplikasi terpisah per sekolah.",
+      contribution:
+        "Merancang CMS/LMS multi-tenant: data induk, RBAC, penilaian Kurikulum Merdeka dan K13, SPP, SPMB, portal wali/siswa, serta API Node.js dengan Next.js, BullMQ, MySQL, dan Redis.",
+      outcome:
+        "Beberapa unit SD/MI hingga SMA/SMK/MA dapat dikelola dalam satu platform.",
+    },
   },
 ];
 
@@ -479,9 +607,25 @@ export const batuProjects: Project[] = [
   },
 ];
 
+const projectTotal =
+  glodingProjects.length +
+  glodingMoreProjects.length +
+  sisiProjects.length +
+  surabayaProjects.length +
+  batuProjects.length +
+  personalProjects.length;
+
+export const stats = [
+  { value: "7+", label: "Tahun pengalaman" },
+  { value: `${skillCards.length}`, label: "Skill" },
+  { value: `${projectTotal}`, label: "Proyek" },
+  { value: "3.85", label: "IPK cumlaude" },
+] as const;
+
 export const teaching = [
-  "Saya pernah menjadi asisten praktikum pada mata kuliah Pemrograman Dasar, Jaringan Komputer, Administrasi Sistem, Basis Data, dan Rekayasa Perangkat Lunak.",
-  "Dengan latar belakang Pendidikan Teknologi Informasi, saya terbiasa menyampaikan konsep teknis secara runtut dan mudah dipahami.",
+  "Saya pernah menjadi asisten praktikum di Fakultas Ilmu Komputer Universitas Brawijaya pada lima mata kuliah: Pemrograman Dasar, Jaringan Komputer, Administrasi Sistem, Basis Data, dan Rekayasa Perangkat Lunak.",
+  "Peran tersebut mencakup pendampingan praktikum, penjelasan konsep, dan bantuan pengerjaan materi kepada mahasiswa.",
+  "Dengan latar belakang S1 Pendidikan Teknologi Informasi, saya terbiasa menyusun penjelasan teknis secara runtut agar mudah dipahami.",
 ] as const;
 
 export const education = {
