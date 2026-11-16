@@ -9,12 +9,14 @@ import { SelectedWork } from "./components/SelectedWork";
 import { Services } from "./components/Services";
 import { Skills } from "./components/Skills";
 import { navItems, profile } from "./data/profile";
+import { useCopy } from "./i18n/useCopy";
 import { useActiveSection } from "./hooks/useActiveSection";
 
 const sectionIds = navItems.map((item) => item.id);
 
 export default function App() {
   const active = useActiveSection(sectionIds);
+  const { ui } = useCopy();
 
   return (
     <div className="min-h-screen bg-night text-white">
@@ -22,7 +24,7 @@ export default function App() {
         href="#home"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-gold focus:px-3 focus:py-2 focus:text-ink"
       >
-        Lewati ke konten
+        {ui.skipToContent}
       </a>
       <Header active={active} />
       <main>

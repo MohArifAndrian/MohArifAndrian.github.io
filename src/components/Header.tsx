@@ -1,6 +1,7 @@
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
-import { navItems, profile } from "../data/profile";
+import { useCopy } from "../i18n/useCopy";
+import { LanguageSwitch } from "./LanguageSwitch";
 
 type HeaderProps = {
   active: string;
@@ -8,6 +9,7 @@ type HeaderProps = {
 
 export function Header({ active }: HeaderProps) {
   const [open, setOpen] = useState(false);
+  const { ui, navItems, profile } = useCopy();
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-white/5 bg-night/90 backdrop-blur-md">
@@ -38,18 +40,19 @@ export function Header({ active }: HeaderProps) {
             href={profile.cv}
             className="hidden whitespace-nowrap rounded-full border border-gold/40 px-3 py-1.5 text-xs font-bold text-gold transition-colors hover:bg-gold hover:text-ink lg:inline-flex"
           >
-            Unduh CV
+            {ui.downloadCv}
           </a>
           <a
             href="#contact"
             className="gold-btn hidden whitespace-nowrap px-3.5 py-1.5 text-xs sm:inline-flex"
           >
-            Hubungi Saya
+            {ui.contactMe}
           </a>
+          <LanguageSwitch />
           <button
             type="button"
             className="grid h-10 w-10 place-items-center rounded-xl border border-white/10 lg:hidden"
-            aria-label={open ? "Tutup menu" : "Buka menu"}
+            aria-label={open ? ui.closeMenu : ui.openMenu}
             onClick={() => setOpen((value) => !value)}
           >
             {open ? <X size={18} /> : <Menu size={18} />}
@@ -79,7 +82,7 @@ export function Header({ active }: HeaderProps) {
                 className="block rounded-lg px-3 py-2 text-sm font-medium text-gold"
                 onClick={() => setOpen(false)}
               >
-                Unduh CV
+                {ui.downloadCv}
               </a>
             </li>
           </ul>

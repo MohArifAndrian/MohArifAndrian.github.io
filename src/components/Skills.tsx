@@ -23,7 +23,7 @@ import {
   Workflow,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-import { skillCards } from "../data/profile";
+import { useCopy } from "../i18n/useCopy";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
 
@@ -56,14 +56,16 @@ const icons: Record<string, LucideIcon> = {
 };
 
 export function Skills() {
+  const { ui, skillCards } = useCopy();
+
   return (
     <section id="skills" className="px-5 py-16 lg:px-8 lg:py-24">
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <SectionHeading
-            kicker="Skill"
-            title="Teknologi yang"
-            highlight="dikuasai"
+            kicker={ui.skills.kicker}
+            title={ui.skills.title}
+            highlight={ui.skills.highlight}
           />
         </Reveal>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8">

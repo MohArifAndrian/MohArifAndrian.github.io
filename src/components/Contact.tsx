@@ -1,18 +1,20 @@
 import { FileDown, Github, Globe, Linkedin, Mail, MapPin, Phone, Send } from "lucide-react";
 import type { FormEvent } from "react";
-import { profile } from "../data/profile";
+import { useCopy } from "../i18n/useCopy";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
 
 export function Contact() {
+  const { ui, profile } = useCopy();
+
   function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const name = String(data.get("name") ?? "");
     const email = String(data.get("email") ?? "");
-    const subject = String(data.get("subject") ?? "Halo");
+    const subject = String(data.get("subject") ?? ui.contact.defaultSubject);
     const message = String(data.get("message") ?? "");
-    const body = encodeURIComponent(`Dari: ${name} <${email}>\n\n${message}`);
+    const body = encodeURIComponent(`${ui.contact.from}: ${name} <${email}>\n\n${message}`);
     window.location.href = `mailto:${profile.email}?subject=${encodeURIComponent(subject)}&body=${body}`;
   }
 
@@ -21,19 +23,15 @@ export function Contact() {
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <SectionHeading
-            kicker="Kontak"
-            title="Silakan"
-            highlight="menghubungi saya"
+            kicker={ui.contact.kicker}
+            title={ui.contact.title}
+            highlight={ui.contact.highlight}
           />
         </Reveal>
         <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr]">
           <Reveal>
             <div className="rounded-[1.6rem] bg-night-2 p-7 ring-1 ring-white/5">
-              <p className="text-sm leading-7 text-muted">
-                Apabila terdapat keperluan kolaborasi, pertanyaan teknis, atau
-                pengembangan sistem, silakan mengirim pesan. Saya akan merespons
-                secepatnya.
-              </p>
+              <p className="text-sm leading-7 text-muted">{ui.contact.intro}</p>
               <ul className="mt-6 space-y-4 text-sm">
                 <li className="flex items-center gap-3">
                   <MapPin size={16} className="text-gold" />
@@ -87,7 +85,7 @@ export function Contact() {
                 <li>
                   <a href={profile.cv} className="flex items-center gap-3 hover:text-gold">
                     <FileDown size={16} className="text-gold" />
-                    Unduh CV
+                    {ui.downloadCv}
                   </a>
                 </li>
               </ul>
@@ -96,25 +94,25 @@ export function Contact() {
           <Reveal delay={80}>
             <form onSubmit={onSubmit} className="grid gap-4 rounded-[1.6rem] bg-night-2 p-7 ring-1 ring-white/5">
               <div className="grid gap-4 sm:grid-cols-2">
-                <input name="name" required className="site-input" placeholder="Nama" />
+                <input name="name" required className="site-input" placeholder={ui.contact.name} />
                 <input
                   name="email"
                   type="email"
                   required
                   className="site-input"
-                  placeholder="Email"
+                  placeholder={ui.contact.email}
                 />
               </div>
-              <input name="subject" required className="site-input" placeholder="Subjek" />
+              <input name="subject" required className="site-input" placeholder={ui.contact.subject} />
               <textarea
                 name="message"
                 required
                 rows={5}
                 className="site-input resize-none"
-                placeholder="Tuliskan keperluan Anda"
+                placeholder={ui.contact.message}
               />
               <button type="submit" className="gold-btn w-full py-3 text-sm sm:w-auto sm:px-6">
-                Kirim Pesan
+                {ui.contact.send}
                 <Send size={15} />
               </button>
             </form>

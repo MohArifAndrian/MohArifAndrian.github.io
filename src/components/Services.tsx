@@ -1,20 +1,22 @@
 import { Cpu, Server, ServerCog, ShoppingBag } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-import { services } from "../data/profile";
+import { useCopy } from "../i18n/useCopy";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
 
 const icons: LucideIcon[] = [Server, ShoppingBag, Cpu, ServerCog];
 
 export function Services() {
+  const { ui, services } = useCopy();
+
   return (
     <section id="services" className="px-5 py-16 lg:px-8 lg:py-24">
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <SectionHeading
-            kicker="Layanan"
-            title="Lingkup"
-            highlight="pekerjaan"
+            kicker={ui.services.kicker}
+            title={ui.services.title}
+            highlight={ui.services.highlight}
           />
         </Reveal>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">

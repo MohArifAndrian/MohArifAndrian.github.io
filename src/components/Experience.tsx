@@ -1,16 +1,18 @@
-import { experience } from "../data/profile";
+import { useCopy } from "../i18n/useCopy";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
 
 export function Experience() {
+  const { ui, experience } = useCopy();
+
   return (
     <section id="experience" className="px-5 py-16 lg:px-8 lg:py-24">
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <SectionHeading
-            kicker="Pengalaman"
-            title="Riwayat"
-            highlight="pengalaman kerja"
+            kicker={ui.experience.kicker}
+            title={ui.experience.title}
+            highlight={ui.experience.highlight}
           />
         </Reveal>
         <Reveal className="rounded-[2rem] bg-gold p-6 text-ink md:p-10">

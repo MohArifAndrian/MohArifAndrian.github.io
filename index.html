@@ -19,6 +19,12 @@
   </head>
   <body>
     <div id="root"></div>
+    <script>
+      try {
+        var locale = localStorage.getItem("maa-locale");
+        if (locale === "id" || locale === "en") document.documentElement.lang = locale;
+      } catch (e) {}
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

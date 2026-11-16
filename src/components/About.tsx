@@ -1,9 +1,11 @@
 import { Check } from "lucide-react";
-import { aboutHighlights, profile } from "../data/profile";
+import { useCopy } from "../i18n/useCopy";
 import { Monogram } from "./Monogram";
 import { Reveal } from "./Reveal";
 
 export function About() {
+  const { ui, profile, aboutHighlights } = useCopy();
+
   return (
     <section id="about" className="px-5 py-16 lg:px-8 lg:py-24">
       <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
@@ -16,11 +18,11 @@ export function About() {
 
         <Reveal delay={80}>
           <p className="text-xs font-semibold uppercase tracking-[0.28em] text-gold">
-            Tentang
+            {ui.about.kicker}
           </p>
           <h2 className="mt-3 text-3xl font-extrabold leading-tight md:text-4xl">
-            Saya mengembangkan sistem yang{" "}
-            <span className="text-gold">mendukung pekerjaan sehari-hari</span>
+            {ui.about.title}{" "}
+            <span className="text-gold">{ui.about.highlight}</span>
           </h2>
           <div className="mt-6 space-y-4 text-sm leading-7 text-muted md:text-[15px]">
             {profile.bio.map((paragraph) => (

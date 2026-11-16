@@ -1,8 +1,10 @@
 import { BookOpen, GraduationCap } from "lucide-react";
-import { education, teaching } from "../data/profile";
+import { useCopy } from "../i18n/useCopy";
 import { Reveal } from "./Reveal";
 
 export function Education() {
+  const { ui, education, teaching } = useCopy();
+
   return (
     <section className="px-5 py-8 lg:px-8">
       <div className="mx-auto grid max-w-6xl gap-5 md:grid-cols-2">
@@ -12,13 +14,13 @@ export function Education() {
               <GraduationCap size={22} strokeWidth={1.8} />
             </span>
             <p className="mt-6 text-xs font-semibold uppercase tracking-[0.22em] text-gold">
-              Pendidikan
+              {ui.education.kicker}
             </p>
             <h3 className="mt-2 text-2xl font-extrabold">{education.institution}</h3>
             <p className="mt-2 text-sm text-muted">{education.faculty}</p>
             <p className="mt-1 text-sm">{education.program}</p>
             <p className="mt-5 text-sm font-semibold text-gold">
-              {education.years} · IPK {education.gpa} · {education.predicate}
+              {education.years} · {ui.education.gpaLabel} {education.gpa} · {education.predicate}
             </p>
             <p className="mt-3 text-sm leading-6 text-muted">{education.note}</p>
           </article>
@@ -29,9 +31,9 @@ export function Education() {
               <BookOpen size={22} strokeWidth={1.8} />
             </span>
             <p className="mt-6 text-xs font-semibold uppercase tracking-[0.22em] text-gold">
-              Mengajar
+              {ui.education.teachingKicker}
             </p>
-            <h3 className="mt-2 text-2xl font-extrabold">Asisten praktikum dan pengajaran</h3>
+            <h3 className="mt-2 text-2xl font-extrabold">{ui.education.teachingTitle}</h3>
             <ul className="mt-4 space-y-2 text-sm leading-6 text-muted">
               {teaching.map((item) => (
                 <li key={item}>{item}</li>

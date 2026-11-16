@@ -8,30 +8,40 @@ import {
   surabayaProjects,
   type Project,
 } from "../data/profile";
+import { useCopy } from "../i18n/useCopy";
+import type { UiCopy } from "../i18n/ui";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
 
-function CaseNotes({ project }: { project: Project }) {
+function CaseNotes({ project, labels }: { project: Project; labels: UiCopy["work"] }) {
   if (!project.caseStudy) return null;
   return (
     <ul className="mt-3 space-y-2 text-sm leading-6 text-muted">
       <li>
-        <span className="font-semibold text-gold">Masalah. </span>
+        <span className="font-semibold text-gold">{labels.problem} </span>
         {project.caseStudy.problem}
       </li>
       <li>
-        <span className="font-semibold text-gold">Kontribusi. </span>
+        <span className="font-semibold text-gold">{labels.contribution} </span>
         {project.caseStudy.contribution}
       </li>
       <li>
-        <span className="font-semibold text-gold">Hasil. </span>
+        <span className="font-semibold text-gold">{labels.outcome} </span>
         {project.caseStudy.outcome}
       </li>
     </ul>
   );
 }
 
-function Card({ project, index }: { project: Project; index: number }) {
+function Card({
+  project,
+  index,
+  labels,
+}: {
+  project: Project;
+  index: number;
+  labels: UiCopy["work"];
+}) {
   const inner = (
     <>
       <div className="flex items-start justify-between gap-3">
@@ -42,13 +52,13 @@ function Card({ project, index }: { project: Project; index: number }) {
           <ArrowUpRight size={16} className="text-gold" />
         ) : (
           <span className="text-[10px] font-semibold uppercase tracking-wider text-muted">
-            Internal
+            {labels.internal}
           </span>
         )}
       </div>
       <h3 className="mt-5 text-xl font-extrabold">{project.name}</h3>
       <p className="mt-3 text-sm leading-6 text-muted">{project.description}</p>
-      <CaseNotes project={project} />
+      <CaseNotes project={project} labels={labels} />
       <p className="mt-5 text-[11px] font-semibold uppercase tracking-[0.14em] text-gold/90">
         {project.stack.slice(0, 4).join(" · ")}
       </p>
@@ -92,14 +102,23 @@ function CompanyHeading({
 }
 
 export function SelectedWork() {
+  const { ui, localizeProject } = useCopy();
+  const labels = ui.work;
+  const gloding = glodingProjects.map(localizeProject);
+  const glodingMore = glodingMoreProjects.map(localizeProject);
+  const surabaya = surabayaProjects.map(localizeProject);
+  const sisi = sisiProjects.map(localizeProject);
+  const batu = batuProjects.map(localizeProject);
+  const personal = personalProjects.map(localizeProject);
+
   return (
     <section id="work" className="px-5 py-16 lg:px-8 lg:py-24">
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <SectionHeading
-            kicker="Proyek"
-            title="Karya yang pernah"
-            highlight="dikerjakan"
+            kicker={labels.kicker}
+            title={labels.title}
+            highlight={labels.highlight}
           />
         </Reveal>
 
@@ -107,57 +126,57 @@ export function SelectedWork() {
           <CompanyHeading
             kicker="Gloding Inc."
             company="PT. Global Coding Indonesia"
-            note="Pengembangan CMS, e-commerce, CRM, dan integrasi sistem."
+            note={labels.glodingNote}
           />
         </Reveal>
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {glodingProjects.map((project, index) => (
+          {gloding.map((project, index) => (
             <Reveal key={project.name} delay={index * 50}>
-              <Card project={project} index={index} />
+              <Card project={project} index={index} labels={labels} />
             </Reveal>
           ))}
         </div>
         <Reveal className="mt-8">
           <p className="mb-4 text-center text-xs font-semibold uppercase tracking-[0.22em] text-gold/80">
-            Proyek lainnya di Gloding
+            {labels.glodingMore}
           </p>
-          <ProjectList projects={glodingMoreProjects} />
+          <ProjectList projects={glodingMore} />
         </Reveal>
 
         <Reveal className="mt-16">
           <CompanyHeading
-            kicker="Kontrak"
+            kicker={labels.surabayaKicker}
             company="Dinas Perumahan Rakyat dan Kawasan Permukiman, Cipta Karya dan Tata Ruang Kota Surabaya"
-            note="Pengembangan aplikasi administrasi dinas."
+            note={labels.surabayaNote}
           />
-          <ProjectList projects={surabayaProjects} />
+          <ProjectList projects={surabaya} />
         </Reveal>
 
         <div className="mt-16">
           <CompanyHeading
             kicker="PT SISI"
             company="PT. Sinergi Informatika Semen Indonesia (SISI)"
-            note="Sistem yang dikembangkan untuk Semen Indonesia Group dan perusahaan eksternal."
+            note={labels.sisiNote}
           />
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {sisiProjects.slice(0, 3).map((project, index) => (
+            {sisi.slice(0, 3).map((project, index) => (
               <Reveal key={project.name} delay={index * 50}>
-                <Card project={project} index={index} />
+                <Card project={project} index={index} labels={labels} />
               </Reveal>
             ))}
           </div>
           <Reveal className="mt-5">
-            <ProjectList projects={sisiProjects.slice(3)} />
+            <ProjectList projects={sisi.slice(3)} />
           </Reveal>
         </div>
 
         <Reveal className="mt-16">
           <CompanyHeading
-            kicker="Magang"
+            kicker={labels.batuKicker}
             company="Dinas Komunikasi dan Informatika Kota Batu"
-            note="Pengembangan media informasi publik dan sistem inventaris dinas."
+            note={labels.batuNote}
           />
-          <ProjectList projects={batuProjects} />
+          <ProjectList projects={batu} />
         </Reveal>
 
         <div className="mt-20 flex items-center gap-4" aria-hidden="true">
@@ -168,13 +187,13 @@ export function SelectedWork() {
 
         <Reveal className="mt-14">
           <CompanyHeading
-            kicker="Personal"
-            company="Personal Project dan Kolaborasi"
-            note="Dikembangkan bersama instansi pemerintah, yayasan, lembaga pendidikan, dan pelaku usaha."
+            kicker={labels.personalKicker}
+            company={labels.personalTitle}
+            note={labels.personalNote}
           />
         </Reveal>
         <div className="grid gap-x-12 gap-y-12 md:grid-cols-2">
-          {personalProjects.map((project, index) => (
+          {personal.map((project, index) => (
             <Reveal
               key={project.name}
               delay={index * 60}
@@ -189,7 +208,7 @@ export function SelectedWork() {
                 ) : null}
                 <h3 className="mt-2 text-xl font-extrabold md:text-2xl">{project.name}</h3>
                 <p className="mt-3 text-sm leading-7 text-muted">{project.description}</p>
-                <CaseNotes project={project} />
+                <CaseNotes project={project} labels={labels} />
                 <p className="mt-4 text-[11px] font-medium text-gold/90">
                   {project.stack.join(" · ")}
                 </p>

@@ -1,6 +1,8 @@
-import { profile, stats } from "../data/profile";
+import { useCopy } from "../i18n/useCopy";
 
 export function Hero() {
+  const { profile, stats } = useCopy();
+
   return (
     <section
       id="home"
