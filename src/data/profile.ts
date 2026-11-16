@@ -243,7 +243,7 @@ export const experience = [
     period: "Juni 2018 — Agustus 2018",
     points: [
       "Mengembangkan website instansi sebagai media penyampaian informasi publik.",
-      "Menyusun tampilan dan fungsi situs agar informasi lebih mudah diakses masyarakat.",
+      "Membangun sistem manajemen inventaris untuk pencatatan, pemantauan, dan pelaporan aset dinas.",
     ],
   },
 ] as const;
@@ -595,6 +595,23 @@ export const personalProjects: Project[] = [
         "Beberapa unit SD/MI hingga SMA/SMK/MA dapat dikelola dalam satu platform.",
     },
   },
+  {
+    name: "Tour Travel Wisata",
+    org: "CV SENDIKO TOUR (Omah Sopir Sendiko) JOGJA",
+    description:
+      "Website profil dan pemesanan paket wisata CV. Sendiko Tour Jogja. Situs ini menampilkan katalog paket wisata ke Yogyakarta dan sekitarnya, layanan tour serta sewa transportasi, profil perusahaan, testimoni pelanggan, syarat pemesanan, dan formulir kontak agar calon wisatawan dapat memilih paket dan menghubungi biro tour dalam satu tempat.",
+    stack: ["PHP", "MySQL"],
+    url: null,
+    fullWidth: true,
+    caseStudy: {
+      problem:
+        "Informasi paket wisata, layanan tour, dan pemesanan CV. Sendiko Jogja belum terangkum dalam satu situs yang mudah diakses calon wisatawan.",
+      contribution:
+        "Mengembangkan website katalog dan pemesanan paket wisata, termasuk layanan tour, sewa transportasi, profil perusahaan, dan formulir kontak.",
+      outcome:
+        "Calon wisatawan dapat melihat paket, layanan, dan menghubungi biro tour secara daring.",
+    },
+  },
 ];
 
 export const batuProjects: Project[] = [
@@ -604,6 +621,13 @@ export const batuProjects: Project[] = [
       "Pengembangan website Pejabat Pengelola Informasi dan Dokumentasi sebagai media informasi publik.",
     stack: ["PHP", "MySQL", "Web Design"],
     url: "https://ppid.batukota.go.id/",
+  },
+  {
+    name: "Sistem Manajemen Inventaris",
+    description:
+      "Pengembangan sistem pencatatan dan pengelolaan barang inventaris Diskominfo Kota Batu, mencakup data aset, mutasi, dan laporan stok agar pemantauan aset dinas lebih tertata.",
+    stack: ["PHP", "MySQL"],
+    url: null,
   },
 ];
 

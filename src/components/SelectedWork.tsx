@@ -155,7 +155,7 @@ export function SelectedWork() {
           <CompanyHeading
             kicker="Magang"
             company="Dinas Komunikasi dan Informatika Kota Batu"
-            note="Pengembangan media informasi publik."
+            note="Pengembangan media informasi publik dan sistem inventaris dinas."
           />
           <ProjectList projects={batuProjects} />
         </Reveal>
@@ -170,7 +170,7 @@ export function SelectedWork() {
           <CompanyHeading
             kicker="Personal"
             company="Personal Project dan Kolaborasi"
-            note="Dikembangkan bersama instansi pemerintah, yayasan, dan lembaga pendidikan."
+            note="Dikembangkan bersama instansi pemerintah, yayasan, lembaga pendidikan, dan pelaku usaha."
           />
         </Reveal>
         <div className="grid gap-x-12 gap-y-12 md:grid-cols-2">
