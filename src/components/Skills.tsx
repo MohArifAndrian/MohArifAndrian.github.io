@@ -5,12 +5,16 @@ import {
   ClipboardCheck,
   Cloud,
   Code2,
+  Component,
   CreditCard,
   Database,
+  Figma,
   FileCode,
   GitBranch,
   Hash,
+  Kanban,
   Layers,
+  LayoutGrid,
   Layout,
   Map,
   Network,
@@ -33,8 +37,10 @@ const icons: Record<string, LucideIcon> = {
   JavaScript: Braces,
   HTML: FileCode,
   CSS: Palette,
+  PrimeFaces: LayoutGrid,
   PHP: Server,
   Java: SquareCode,
+  JSF: Component,
   "Node.js": Workflow,
   "C#": Hash,
   MySQL: Database,
@@ -49,6 +55,8 @@ const icons: Record<string, LucideIcon> = {
   WordPress: Triangle,
   "REST API": Webhook,
   Git: GitBranch,
+  Figma: Figma,
+  Jira: Kanban,
   GIS: Map,
   "Data Analyst": BarChart3,
   "BA & QA": ClipboardCheck,
@@ -77,7 +85,12 @@ export function Skills() {
                   <span className="mx-auto grid h-10 w-10 place-items-center rounded-full bg-gold text-ink">
                     <Icon size={16} strokeWidth={1.8} />
                   </span>
-                  <h3 className="mt-3 truncate text-[13px] font-extrabold">{skill.name}</h3>
+                  <h3
+                    className="mt-3 truncate text-[13px] font-extrabold"
+                    title={skill.name === "JSF" ? "JavaServer Faces" : undefined}
+                  >
+                    {skill.name}
+                  </h3>
                   <p className="mt-0.5 text-[10px] font-medium uppercase tracking-wider text-muted">
                     {skill.group}
                   </p>

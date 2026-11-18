@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 const HOT = "a, button, summary, label, [role='button']";
 const TEXT = "input, textarea, select, [contenteditable='true']";
 
-type Puff = {
+type Bubble = {
   x: number;
   y: number;
   vx: number;
@@ -16,7 +16,7 @@ type Puff = {
 export function GoldCursor() {
   const dotRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
-  const smokeRef = useRef<HTMLCanvasElement>(null);
+  const bubbleRef = useRef<HTMLCanvasElement>(null);
   const [active, setActive] = useState(false);
 
   useEffect(() => {
@@ -49,9 +49,9 @@ export function GoldCursor() {
     let prevX = 0;
     let prevY = 0;
     let primed = false;
-    const puffs: Puff[] = [];
+    const bubbles: Bubble[] = [];
 
-    const canvas = smokeRef.current;
+    const canvas = bubbleRef.current;
     const context = canvas?.getContext("2d") ?? null;
 
     const fitSmoke = () => {
@@ -84,22 +84,18 @@ export function GoldCursor() {
       const dx = x - prevX;
       const dy = y - prevY;
       const distance = Math.hypot(dx, dy);
-      if (primed && visible && distance > 4) {
+      if (primed && visible && distance > 42 && bubbles.length < 7) {
         const nx = dx / distance;
         const ny = dy / distance;
-        const steps = Math.min(3, Math.max(1, Math.round(distance / 16)));
-        for (let step = 0; step < steps && puffs.length < 56; step += 1) {
-          const along = (step + 1) / steps;
-          puffs.push({
-            x: prevX + dx * along - nx * 12,
-            y: prevY + dy * along - ny * 12,
-            vx: -nx * (0.45 + Math.random() * 0.85) + (Math.random() - 0.5) * 0.4,
-            vy: -ny * (0.45 + Math.random() * 0.85) + (Math.random() - 0.5) * 0.4 - 0.14,
-            life: 0,
-            max: 28 + Math.random() * 18,
-            size: 14 + Math.random() * 20,
-          });
-        }
+        bubbles.push({
+          x: x - nx * 22,
+          y: y - ny * 22,
+          vx: -nx * 0.22 + (Math.random() - 0.5) * 0.12,
+          vy: -ny * 0.22 - 0.12,
+          life: 0,
+          max: 34 + Math.random() * 10,
+          size: 6 + Math.random() * 4,
+        });
       }
       prevX = x;
       prevY = y;
@@ -133,27 +129,36 @@ export function GoldCursor() {
       }
       if (context) {
         context.clearRect(0, 0, window.innerWidth, window.innerHeight);
-        for (let index = puffs.length - 1; index >= 0; index -= 1) {
-          const puff = puffs[index];
-          puff.life += 1;
-          if (puff.life >= puff.max) {
-            puffs.splice(index, 1);
+        for (let index = bubbles.length - 1; index >= 0; index -= 1) {
+          const bubble = bubbles[index];
+          bubble.life += 1;
+          if (bubble.life >= bubble.max) {
+            bubbles.splice(index, 1);
             continue;
           }
-          puff.x += puff.vx;
-          puff.y += puff.vy;
-          puff.vx *= 0.97;
-          puff.vy *= 0.97;
-          const progress = puff.life / puff.max;
-          const alpha = (1 - progress) * 0.38;
-          const radius = puff.size * (0.55 + progress * 1.35);
-          const glow = context.createRadialGradient(puff.x, puff.y, 0, puff.x, puff.y, radius);
-          glow.addColorStop(0, `rgba(255, 246, 220, ${alpha})`);
-          glow.addColorStop(0.42, `rgba(242, 201, 76, ${alpha * 0.42})`);
-          glow.addColorStop(1, "rgba(242, 201, 76, 0)");
-          context.fillStyle = glow;
+          bubble.x += bubble.vx;
+          bubble.y += bubble.vy;
+          bubble.vx *= 0.985;
+          bubble.vy *= 0.985;
+          const progress = bubble.life / bubble.max;
+          const alpha = (1 - progress) * 0.8;
+          const radius = bubble.size * (1 + progress * 0.2);
           context.beginPath();
-          context.arc(puff.x, puff.y, radius, 0, Math.PI * 2);
+          context.arc(bubble.x, bubble.y, radius, 0, Math.PI * 2);
+          context.fillStyle = `rgba(242, 201, 76, ${alpha * 0.14})`;
+          context.fill();
+          context.strokeStyle = `rgba(242, 201, 76, ${alpha})`;
+          context.lineWidth = 1.35;
+          context.stroke();
+          context.beginPath();
+          context.arc(
+            bubble.x - radius * 0.34,
+            bubble.y - radius * 0.36,
+            Math.max(1.1, radius * 0.2),
+            0,
+            Math.PI * 2,
+          );
+          context.fillStyle = `rgba(255, 248, 224, ${alpha * 0.95})`;
           context.fill();
         }
       }
@@ -182,7 +187,7 @@ export function GoldCursor() {
 
   return (
     <>
-      <canvas ref={smokeRef} className="cursor-smoke" aria-hidden="true" />
+      <canvas ref={bubbleRef} className="cursor-bubbles" aria-hidden="true" />
       <div ref={ringRef} className="cursor-ring" aria-hidden="true" />
       <div ref={dotRef} className="cursor-dot" aria-hidden="true" />
     </>

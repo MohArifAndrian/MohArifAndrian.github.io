@@ -146,7 +146,7 @@ html.has-gold-cursor select {
   cursor: auto !important;
 }
 
-.cursor-smoke {
+.cursor-bubbles {
   position: fixed;
   inset: 0;
   z-index: 70;
