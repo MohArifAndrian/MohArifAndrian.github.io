@@ -130,14 +130,14 @@ export const enProjects: Record<string, ProjectText> = {
       outcome: "Members can register, open the dashboard, and track points in one platform.",
     },
   },
-  "ROCK CHOCOLATE": {
-    description: "Manages orders and shipping, including reading documents and matching products.",
+  MAHASU: {
+    description: "A CRM for parent-skills training programs.",
     caseStudy: {
       problem:
-        "Order and shipping work stalled when product data had to be matched from documents separately.",
+        "Participant data, program activity, and training information were still scattered, so the program was hard to monitor as a whole.",
       contribution:
-        "Built a CMS to read documents, match products, and organize the order flow with AI support.",
-      outcome: "Order and shipping operations can be monitored in one system.",
+        "Built a CRM and REST API to organize participant data, program activity, and related information in a structured way.",
+      outcome: "Participant data and training activity can be managed in one system.",
     },
   },
   SHASHUSHO: {
@@ -207,9 +207,9 @@ export const enProjects: Record<string, ProjectText> = {
     description:
       "A CMS for handwriting course programs with e-commerce, so content, course information, and transactions can be managed in one place.",
   },
-  MAHASU: {
+  "ROCK CHOCOLATE": {
     description:
-      "A CRM for parent-skills training programs, including participant data, program activity, and related information in a structured form.",
+      "A CMS for orders and shipping, including document reading, AI-assisted product matching, and monitoring the operational flow in one system.",
   },
   LIFECARE: {
     description:

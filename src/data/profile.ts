@@ -319,18 +319,18 @@ export const glodingProjects: Project[] = [
     },
   },
   {
-    name: "ROCK CHOCOLATE",
+    name: "MAHASU",
     description:
-      "Mengelola pesanan dan pengiriman, termasuk membaca dokumen dan mencocokkan produk.",
-    stack: ["Node.js", "React.js", "Redis", "OpenAI"],
-    url: "https://cms.rock-chocolate.co.jp/login",
+      "Sistem CRM untuk program pelatihan peningkatan keterampilan orang tua.",
+    stack: ["CRM", "Backend Development", "REST API", "Database"],
+    url: "https://parents.kmahasu.com/",
     caseStudy: {
       problem:
-        "Pengelolaan pesanan dan pengiriman terhambat ketika data produk harus dicocokkan dari dokumen secara terpisah.",
+        "Data peserta, aktivitas program, dan informasi pelatihan masih tersebar, sehingga program sulit dipantau secara utuh.",
       contribution:
-        "Mengembangkan CMS untuk membaca dokumen, mencocokkan produk, dan menata alur pesanan dengan dukungan AI.",
+        "Mengembangkan CRM dan REST API untuk menata data peserta, aktivitas program, dan informasi terkait secara terstruktur.",
       outcome:
-        "Operasional pesanan dan pengiriman dapat dipantau dalam satu sistem.",
+        "Data peserta dan aktivitas program pelatihan dapat dikelola dalam satu sistem.",
     },
   },
   {
@@ -443,11 +443,11 @@ export const glodingMoreProjects: Project[] = [
     url: "https://amimono.me/",
   },
   {
-    name: "MAHASU",
+    name: "ROCK CHOCOLATE",
     description:
-      "Pengembangan sistem CRM untuk mendukung pengelolaan program pelatihan peningkatan keterampilan orang tua, termasuk pengelolaan data peserta, aktivitas program, dan informasi terkait secara terstruktur.",
-    stack: ["CRM", "Backend Development", "REST API", "Database"],
-    url: "https://parents.kmahasu.com/",
+      "Pengembangan CMS untuk mengelola pesanan dan pengiriman, termasuk membaca dokumen, mencocokkan produk dengan dukungan AI, serta memantau alur operasional dalam satu sistem.",
+    stack: ["Node.js", "React.js", "Redis", "OpenAI"],
+    url: "https://cms.rock-chocolate.co.jp/login",
   },
   {
     name: "LIFECARE",
