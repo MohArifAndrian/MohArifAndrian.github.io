@@ -46,6 +46,7 @@ function localizeProject(project: Project, locale: Locale): Project {
 export function buildCopy(locale: Locale) {
   const copy = ui[locale];
   const isEn = locale === "en";
+  const cv = isEn ? profile.cvEn : profile.cv;
 
   return {
     locale,
@@ -60,6 +61,8 @@ export function buildCopy(locale: Locale) {
       greeting: isEn ? enProfile.greeting : profile.greeting,
       tagline: isEn ? enProfile.tagline : profile.tagline,
       bio: isEn ? enProfile.bio : [...profile.bio],
+      cv,
+      cvFileName: cv.slice(cv.lastIndexOf("/") + 1),
     },
     aboutHighlights: isEn ? [...enAboutHighlights] : [...aboutHighlights],
     services: services.map((service) => {

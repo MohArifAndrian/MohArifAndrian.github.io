@@ -38,6 +38,7 @@ export function Header({ active }: HeaderProps) {
         <div className="ml-auto flex shrink-0 items-center justify-end gap-2">
           <a
             href={profile.cv}
+            download={profile.cvFileName}
             className="hidden whitespace-nowrap rounded-full border border-gold/40 px-3 py-1.5 text-xs font-bold text-gold transition-colors hover:bg-gold hover:text-ink lg:inline-flex"
           >
             {ui.downloadCv}
@@ -79,6 +80,7 @@ export function Header({ active }: HeaderProps) {
             <li>
               <a
                 href={profile.cv}
+                download={profile.cvFileName}
                 className="block rounded-lg px-3 py-2 text-sm font-medium text-gold"
                 onClick={() => setOpen(false)}
               >

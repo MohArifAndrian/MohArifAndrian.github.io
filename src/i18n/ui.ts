@@ -11,7 +11,7 @@ export const ui = {
     indonesia: "Indonesia",
     english: "English",
     metaDescription:
-      "Moh. Arif Andrian, software engineer, pengajar pemrograman, dan konsultan IT. Mengembangkan sistem web, CMS, CRM, e-commerce, dan integrasi AI.",
+      "Moh. Arif Andrian, software engineer dan backend developer. Integrasi sistem, infrastruktur cloud, dan konsultan IT.",
     nav: {
       home: "Beranda",
       about: "Tentang",
@@ -107,7 +107,7 @@ export const ui = {
     indonesia: "Indonesia",
     english: "English",
     metaDescription:
-      "Moh. Arif Andrian, software engineer, programming educator, and IT consultant. Building web systems, CMS, CRM, e-commerce, and AI integrations.",
+      "Moh. Arif Andrian, software engineer and backend developer. System integration, cloud infrastructure, and IT consulting.",
     nav: {
       home: "Home",
       about: "About",

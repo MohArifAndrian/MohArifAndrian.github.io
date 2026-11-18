@@ -1,4 +1,5 @@
 import { About } from "./components/About";
+import { GoldCursor } from "./components/GoldCursor";
 import { Contact } from "./components/Contact";
 import { Education } from "./components/Education";
 import { Highlights } from "./components/Highlights";
@@ -20,6 +21,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-night text-white">
+      <GoldCursor />
       <a
         href="#home"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-gold focus:px-3 focus:py-2 focus:text-ink"

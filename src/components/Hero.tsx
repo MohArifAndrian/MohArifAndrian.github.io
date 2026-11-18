@@ -8,20 +8,26 @@ export function Hero() {
       id="home"
       className="relative overflow-hidden px-5 pb-16 pt-28 md:pt-36 lg:px-8 lg:pb-24"
     >
-      <span className="dot left-[8%] top-28 h-2.5 w-2.5 float-y" />
-      <span className="dot right-[18%] top-40 h-3 w-3 float-y" style={{ animationDelay: "0.6s" }} />
-      <span className="dot bottom-16 left-[22%] h-2 w-2" />
+      <span className="dot left-[8%] top-28 hidden h-2.5 w-2.5 float-y sm:block" />
+      <span className="dot right-[18%] top-40 hidden h-3 w-3 float-y sm:block" style={{ animationDelay: "0.6s" }} />
+      <span className="dot bottom-16 left-[22%] hidden h-2 w-2 sm:block" />
 
       <div className="hero-enter mx-auto max-w-5xl text-center">
         <p className="text-sm font-medium text-muted md:text-base">{profile.greeting}</p>
-        <h1 className="mt-4 font-extrabold leading-[1.2] tracking-tight">
-          <span className="block whitespace-nowrap text-[clamp(1.05rem,3.6vw,2.75rem)]">
+        <h1 className="mt-4 font-extrabold leading-[1.15] tracking-tight">
+          <span className="block text-[clamp(1.35rem,4.4vw,2.85rem)]">
             {profile.headline[0]}
             <span className="text-gold"> | </span>
-            {profile.headline[1]}
+            <br className="sm:hidden" />
+            <span className="text-gold">{profile.headline[1]}</span>
           </span>
-          <span className="mt-1 block text-[clamp(1.2rem,4vw,3.15rem)] text-gold">
-            {profile.headline[2]}
+          <span className="mx-auto mt-4 block max-w-3xl text-[clamp(0.8rem,1.7vw,1.05rem)] font-semibold leading-relaxed tracking-wide text-white/75">
+            {profile.headline[2].split(" • ").map((part, index, parts) => (
+              <span key={part}>
+                <span className="whitespace-nowrap">{part}</span>
+                {index < parts.length - 1 ? <span className="text-gold"> • </span> : null}
+              </span>
+            ))}
           </span>
         </h1>
       </div>

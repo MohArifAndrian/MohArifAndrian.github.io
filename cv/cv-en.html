@@ -1,0 +1,700 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>CV Moh. Arif Andrian</title>
+    <style>
+      @font-face {
+        font-family: "Plus Jakarta Sans";
+        src: url("fonts/pjs-400.ttf") format("truetype");
+        font-weight: 400;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Plus Jakarta Sans";
+        src: url("fonts/pjs-500.ttf") format("truetype");
+        font-weight: 500;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Plus Jakarta Sans";
+        src: url("fonts/pjs-600.ttf") format("truetype");
+        font-weight: 600;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Plus Jakarta Sans";
+        src: url("fonts/pjs-700.ttf") format("truetype");
+        font-weight: 700;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Plus Jakarta Sans";
+        src: url("fonts/pjs-800.ttf") format("truetype");
+        font-weight: 800;
+        font-style: normal;
+      }
+
+      :root {
+        --night: #07241e;
+        --night-2: #0e3a30;
+        --gold: #f2c94c;
+        --gold-deep: #a67916;
+        --gold-soft: #f8f1d4;
+        --paper: #f7f4ee;
+        --card: #ffffff;
+        --ink: #14302a;
+        --muted: #5c726b;
+        --line: #e6e0d4;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      @page {
+        size: A4;
+        margin: 0;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background: #d9d3c7;
+        color: var(--ink);
+        font-family: "Plus Jakarta Sans", sans-serif;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .sheet {
+        position: relative;
+        width: 210mm;
+        height: 297mm;
+        overflow: hidden;
+        background: var(--paper);
+        page-break-after: always;
+      }
+
+      .sheet:last-child {
+        page-break-after: auto;
+      }
+
+      .sheet::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 2.4mm;
+        background: var(--gold);
+        z-index: 3;
+      }
+
+      .header {
+        background: var(--night);
+        color: white;
+        padding: 13mm 14mm 11mm 16mm;
+      }
+
+      .identity {
+        display: flex;
+        align-items: center;
+        gap: 6.5mm;
+      }
+
+      .photo {
+        width: 32mm;
+        height: 38mm;
+        object-fit: cover;
+        object-position: center 12%;
+        border-radius: 3.5mm;
+        flex: none;
+        box-shadow: 0 0 0 1.5px var(--gold);
+      }
+
+      .name {
+        margin: 0;
+        font-size: 24pt;
+        font-weight: 800;
+        letter-spacing: -0.035em;
+        line-height: 1.05;
+      }
+
+      .role {
+        margin: 2.2mm 0 0;
+        font-size: 11pt;
+        font-weight: 600;
+        color: var(--gold);
+        letter-spacing: 0.01em;
+      }
+
+      .role span {
+        color: rgba(242, 201, 76, 0.55);
+        padding: 0 1.5mm;
+      }
+
+      .contacts {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.8mm 5mm;
+        margin: 5mm 0 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .contacts li {
+        display: flex;
+        align-items: center;
+        gap: 1.6mm;
+        color: #d7e6e0;
+        font-size: 8.4pt;
+        font-weight: 500;
+      }
+
+      .contacts svg {
+        width: 3.3mm;
+        height: 3.3mm;
+        flex: none;
+        stroke: var(--gold);
+        fill: none;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .body {
+        padding: 8mm 14mm 16mm 16mm;
+      }
+
+      .section-title {
+        display: flex;
+        align-items: center;
+        gap: 3mm;
+        margin: 0 0 3.5mm;
+        font-size: 9.4pt;
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--night);
+      }
+
+      .section-title::after {
+        content: "";
+        height: 1px;
+        flex: 1;
+        background: linear-gradient(90deg, #e3c56a, rgba(227, 197, 106, 0));
+      }
+
+      .profile {
+        margin: 0 0 6.5mm;
+        font-size: 10.15pt;
+        line-height: 1.58;
+        color: var(--ink);
+      }
+
+      .job {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-left: 2.4px solid var(--gold);
+        border-radius: 2.6mm;
+        padding: 3.3mm 4mm 3.2mm 4.2mm;
+        margin: 0 0 2.8mm;
+      }
+
+      .job-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 4mm;
+      }
+
+      .job h3 {
+        margin: 0;
+        font-size: 11pt;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        line-height: 1.25;
+        color: var(--night);
+      }
+
+      .when {
+        flex: none;
+        margin-top: 0.4mm;
+        background: var(--gold-soft);
+        color: #7c5a0d;
+        font-size: 8pt;
+        font-weight: 700;
+        letter-spacing: 0.01em;
+        padding: 1mm 2.3mm;
+        border-radius: 999px;
+      }
+
+      .meta {
+        margin: 1.1mm 0 1.8mm;
+        font-size: 9.2pt;
+        font-weight: 600;
+        color: var(--night-2);
+      }
+
+      .meta em {
+        font-style: normal;
+        font-weight: 500;
+        color: var(--muted);
+      }
+
+      ul.points {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      ul.points li {
+        position: relative;
+        margin: 0 0 1.05mm;
+        padding-left: 3.6mm;
+        font-size: 9.55pt;
+        line-height: 1.42;
+        color: #243f39;
+      }
+
+      ul.points li:last-child {
+        margin-bottom: 0;
+      }
+
+      ul.points li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 1.7mm;
+        width: 1.5mm;
+        height: 1.5mm;
+        border-radius: 999px;
+        background: var(--gold);
+      }
+
+      .bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: var(--night);
+        color: white;
+        padding: 6.5mm 14mm 6.2mm 16mm;
+      }
+
+      .bar strong {
+        font-size: 12pt;
+        font-weight: 800;
+        letter-spacing: -0.03em;
+      }
+
+      .bar span {
+        color: var(--gold);
+        font-size: 8.4pt;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .panel {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 2.8mm;
+        padding: 4.4mm 4.6mm 4mm;
+        margin: 0 0 5.2mm;
+      }
+
+      .skill-row {
+        display: grid;
+        grid-template-columns: 27mm 1fr;
+        gap: 2mm 3mm;
+        align-items: start;
+        padding: 2.5mm 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .skill-row:first-child {
+        padding-top: 0;
+      }
+
+      .skill-row:last-child {
+        border-bottom: 0;
+        padding-bottom: 0;
+      }
+
+      .skill-row p {
+        margin: 0.6mm 0 0;
+        font-size: 8pt;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--gold-deep);
+      }
+
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.4mm;
+      }
+
+      .chip {
+        background: #f3f7f5;
+        color: var(--night);
+        border-radius: 999px;
+        padding: 1mm 2.4mm;
+        font-size: 8.5pt;
+        font-weight: 600;
+        line-height: 1.3;
+      }
+
+      .split {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4mm;
+      }
+
+      .edu h3,
+      .block h3 {
+        margin: 0;
+        font-size: 11pt;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        line-height: 1.3;
+        color: var(--night);
+      }
+
+      .edu .program {
+        margin: 1.2mm 0 0;
+        font-size: 9.6pt;
+        font-weight: 600;
+        color: var(--night-2);
+      }
+
+      .badge {
+        display: inline-block;
+        margin-top: 2.2mm;
+        background: var(--gold);
+        color: var(--night);
+        font-size: 8.3pt;
+        font-weight: 800;
+        padding: 1mm 2.4mm;
+        border-radius: 999px;
+      }
+
+      .note {
+        margin: 2.4mm 0 0;
+        font-size: 9pt;
+        line-height: 1.45;
+        color: var(--muted);
+      }
+
+      .entry {
+        display: grid;
+        grid-template-columns: 12mm 1fr;
+        gap: 2.5mm;
+        padding: 2.7mm 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .entry:first-of-type {
+        padding-top: 0;
+      }
+
+      .entry:last-child {
+        border-bottom: 0;
+        padding-bottom: 0;
+      }
+
+      .year {
+        font-size: 8.6pt;
+        font-weight: 800;
+        color: var(--gold-deep);
+        padding-top: 0.3mm;
+      }
+
+      .entry p {
+        margin: 0;
+        font-size: 9.3pt;
+        line-height: 1.4;
+        font-weight: 700;
+        color: var(--ink);
+      }
+
+      .entry small {
+        display: block;
+        margin-top: 0.5mm;
+        font-size: 8.3pt;
+        font-weight: 500;
+        line-height: 1.35;
+        color: var(--muted);
+      }
+
+      .foot {
+        position: absolute;
+        left: 16mm;
+        right: 14mm;
+        bottom: 6.5mm;
+        display: flex;
+        justify-content: space-between;
+        border-top: 1px solid var(--line);
+        padding-top: 2.4mm;
+        color: var(--muted);
+        font-size: 8pt;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="sheet">
+      <header class="header">
+        <div class="identity">
+          <img class="photo" src="photo.jpg" alt="Portrait of Moh. Arif Andrian" />
+          <div>
+            <h1 class="name">Moh. Arif Andrian</h1>
+            <p class="role">Software Engineer <span>|</span> Backend Developer</p>
+            <ul class="contacts">
+              <li>
+                <svg viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.2"/></svg>
+                Bojonegoro, East Java
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><path d="M6.5 4.5h3l1.5 3.5-2 1.2a12 12 0 0 0 6.3 6.3l1.2-2 3.5 1.5v3A1.5 1.5 0 0 1 18.5 19 15 15 0 0 1 5 5.5 1.5 1.5 0 0 1 6.5 4.5z"/></svg>
+                <a href="tel:+6285733453969">0857 3345 3969</a>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><rect x="3.5" y="5.5" width="17" height="13" rx="2"/><path d="m4 7 8 6 8-6"/></svg>
+                <a href="mailto:moharifandrian@gmail.com">moharifandrian@gmail.com</a>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M4 12h16M12 4c2.4 2.6 2.4 13.4 0 16M12 4c-2.4 2.6-2.4 13.4 0 16"/></svg>
+                <a href="https://moharifandrian.github.io">moharifandrian.github.io</a>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><path d="M9 19c-4 1.2-4-2.2-6-2.6M15 21v-3.2a2.6 2.6 0 0 0-.7-2c2.4-.3 4.9-1.2 4.9-5.3a4 4 0 0 0-1.1-2.8 3.8 3.8 0 0 0-.1-2.8s-.9-.3-3 .1a10.4 10.4 0 0 0-5.4 0c-2.1-.4-3-.1-3-.1a3.8 3.8 0 0 0-.1 2.8 4 4 0 0 0-1.1 2.8c0 4.1 2.5 5 4.9 5.3a2.6 2.6 0 0 0-.7 2V21"/></svg>
+                <a href="https://github.com/MohArifAndrian/">github.com/MohArifAndrian</a>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 10.5V16M8 7.5v.2M12 16v-5.5M12 16v-3a2 2 0 0 1 4 0V16"/></svg>
+                <a href="https://linkedin.com/in/moh-arif-andrian">linkedin.com/in/moh-arif-andrian</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </header>
+
+      <div class="body">
+        <h2 class="section-title">Profile</h2>
+        <p class="profile">
+          Software engineer with more than seven years of experience in backend development, system architecture, APIs, databases, CMS, e-commerce, and CRM. I design data flows, integrate payments and third-party services, and maintain servers so the systems people rely on stay reliable, maintainable, and simpler to operate. Bachelor of Information Technology Education, Faculty of Computer Science, Universitas Brawijaya, cum laude, GPA 3.85.
+        </p>
+
+        <h2 class="section-title">Experience</h2>
+
+        <article class="job">
+          <div class="job-top">
+            <h3>PT. Global Coding Indonesia (Gloding Inc.)</h3>
+            <span class="when">June 2021 – Present</span>
+          </div>
+          <p class="meta">Web Developer <em>· Malang</em></p>
+          <ul class="points">
+            <li>Build and maintain web applications, CMS, e-commerce, and CRM systems for client needs.</li>
+            <li>Integrate REST APIs, payment gateways, third-party services, and AWS into systems already in use.</li>
+            <li>Handle maintenance, bug fixes, and feature delivery with the team.</li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <div class="job-top">
+            <h3>Dinas Perumahan Rakyat dan Kawasan Permukiman, Cipta Karya dan Tata Ruang Kota Surabaya</h3>
+            <span class="when">March 2021 – May 2021</span>
+          </div>
+          <p class="meta">Project Analysis Assistant (IT Staff) <em>· Surabaya · Contract</em></p>
+          <ul class="points">
+            <li>Developed applications for monitoring and administering activities inside the agency.</li>
+            <li>Provided technical support, including troubleshooting IT equipment.</li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <div class="job-top">
+            <h3>PT. Sinergi Informatika Semen Indonesia (SISI)</h3>
+            <span class="when">August 2019 – February 2021</span>
+          </div>
+          <p class="meta">Application Development <em>· Gresik · Freelance</em></p>
+          <ul class="points">
+            <li>Developed information systems for Semen Indonesia Group and external partners.</li>
+            <li>Took part in requirements analysis, feature implementation, and maintenance of operational systems on PHP and Oracle.</li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <div class="job-top">
+            <h3>Dinas Komunikasi dan Informatika Kota Batu</h3>
+            <span class="when">June 2018 – August 2018</span>
+          </div>
+          <p class="meta">Programmer (IT Staff) <em>· Batu · Internship</em></p>
+          <ul class="points">
+            <li>Developed the agency website as a public information channel.</li>
+            <li>Built an inventory system for assets, transfers, and stock reports.</li>
+          </ul>
+        </article>
+      </div>
+
+      <footer class="foot">
+        <span>Moh. Arif Andrian · Curriculum Vitae</span>
+        <span>01</span>
+      </footer>
+    </section>
+
+    <section class="sheet">
+      <header class="bar">
+        <strong>Moh. Arif Andrian</strong>
+        <span>Education &amp; credentials</span>
+      </header>
+
+      <div class="body">
+        <h2 class="section-title">Technical skills</h2>
+        <div class="panel">
+          <div class="skill-row">
+            <p>Backend</p>
+            <div class="chips">
+              <span class="chip">PHP</span>
+              <span class="chip">Java</span>
+              <span class="chip">Node.js</span>
+              <span class="chip">C#</span>
+              <span class="chip">REST API</span>
+            </div>
+          </div>
+          <div class="skill-row">
+            <p>Web</p>
+            <div class="chips">
+              <span class="chip">JavaScript</span>
+              <span class="chip">React.js</span>
+              <span class="chip">Next.js</span>
+              <span class="chip">HTML</span>
+              <span class="chip">CSS</span>
+              <span class="chip">WordPress</span>
+            </div>
+          </div>
+          <div class="skill-row">
+            <p>Database</p>
+            <div class="chips">
+              <span class="chip">MySQL</span>
+              <span class="chip">PostgreSQL</span>
+              <span class="chip">Oracle</span>
+              <span class="chip">DB2</span>
+              <span class="chip">Redis</span>
+            </div>
+          </div>
+          <div class="skill-row">
+            <p>Integration</p>
+            <div class="chips">
+              <span class="chip">AWS</span>
+              <span class="chip">Stripe</span>
+              <span class="chip">Square</span>
+              <span class="chip">GMO</span>
+              <span class="chip">OpenAI</span>
+              <span class="chip">Gemini</span>
+              <span class="chip">OCR</span>
+            </div>
+          </div>
+          <div class="skill-row">
+            <p>Other</p>
+            <div class="chips">
+              <span class="chip">Git</span>
+              <span class="chip">GIS</span>
+              <span class="chip">Data analytics</span>
+              <span class="chip">Business Analyst &amp; QA</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="split">
+          <div>
+            <h2 class="section-title">Education</h2>
+            <article class="panel edu">
+              <h3>Universitas Brawijaya</h3>
+              <p class="program">Faculty of Computer Science<br />B.Ed. Information Technology · 2015–2019</p>
+              <span class="badge">GPA 3.85/4.00 · Cum laude</span>
+              <p class="note">Lab assistant for Basic Programming (2016), and for Computer Networks, System Administration, Databases, and Software Engineering (2018–2019).</p>
+            </article>
+
+            <h2 class="section-title">Organizations</h2>
+            <article class="panel block">
+              <div class="entry">
+                <span class="year">2018</span>
+                <p>Head of the Academic Department<small>Information Technology Education Student Executive</small></p>
+              </div>
+              <div class="entry">
+                <span class="year">2017</span>
+                <p>Council member<small>Student Council, FILKOM UB</small></p>
+              </div>
+            </article>
+          </div>
+
+          <div>
+            <h2 class="section-title">Certifications</h2>
+            <article class="panel block">
+              <div class="entry">
+                <span class="year">2023</span>
+                <p>Business Analyst &amp; Quality Assurance<small>Digital Talent Scholarship, Kominfo</small></p>
+              </div>
+              <div class="entry">
+                <span class="year">2022</span>
+                <p>Google Data Analytics Certificate<small>Digital Talent Scholarship, Kominfo</small></p>
+              </div>
+              <div class="entry">
+                <span class="year">2019</span>
+                <p>Internet of Things<small>Digital Talent Scholarship, Kominfo</small></p>
+              </div>
+            </article>
+
+            <h2 class="section-title">Awards</h2>
+            <article class="panel block">
+              <div class="entry">
+                <span class="year">2019</span>
+                <p>Microsoft Office Application, Gold<small>Excellent</small></p>
+              </div>
+              <div class="entry">
+                <span class="year">2017</span>
+                <p>Best Grade Point Average<small>BEM FILKOM UB</small></p>
+              </div>
+              <div class="entry">
+                <span class="year">2015</span>
+                <p>iFest 2.0 Finalist<small>Faculty of Computer Science, UB</small></p>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <h2 class="section-title">Research</h2>
+        <article class="panel block">
+          <div class="entry">
+            <span class="year">2019</span>
+            <p>Information system for teaching-document administration and teacher supervision, SMK Negeri 5 Malang.<small>Undergraduate thesis</small></p>
+          </div>
+          <div class="entry">
+            <span class="year">2018</span>
+            <p>Grade prediction and vocational internship placement, SMK Negeri 4 Malang.<small>Faculty research, DIPA FILKOM</small></p>
+          </div>
+          <div class="entry">
+            <span class="year">2017</span>
+            <p>Internship placement optimization using a genetic algorithm, SMK Negeri 3 Malang.<small>Faculty research, DIPA FILKOM</small></p>
+          </div>
+        </article>
+      </div>
+
+      <footer class="foot">
+        <span>Moh. Arif Andrian · Curriculum Vitae</span>
+        <span>02</span>
+      </footer>
+    </section>
+  </body>
+</html>
